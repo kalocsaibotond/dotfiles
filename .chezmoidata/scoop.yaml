@@ -1,0 +1,7 @@
+scoop:
+  buckets:
+    - "main"
+    - "extras"
+  packages:
+    - "main/git"
+    - "extras/wezterm"
