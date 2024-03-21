@@ -1,0 +1,59 @@
+scoop:
+  buckets:
+    - "main"
+    - "extras"
+  packages:
+    # GNU utilities
+    - "main/mingw-winlibs"
+    - "main/uutils-coreutils"
+    - "main/diffutils"
+    - "main/patch"
+    - "main/sed"
+    - "main/wget"
+    - "extras/mc"
+    - "main/less"
+    - "main/gawk"
+
+    - "main/gnuplot"
+
+    # Terminal development workflow tools (beyond linux utilites)
+    - "main/pwsh" # Cross-platform (better) powershell
+    - "main/sudo"
+    - "main/btop" # Better top
+    - "main/procs" # Better ps
+    - "main/hyperfine" # CLI benchmarking
+    - "extras/wezterm"
+
+    - "main/tldr" # Simpler manpages
+    - "main/ffmpeg" # Audio - video editing and conversion
+
+    - "main/zoxide" # Directory jumper like z
+    - "main/fd" # Better GNU find
+    - "main/fzf" # Command-line fuzzy finder
+    - "main/eza" # Better ls
+    - "main/lf" # File manager like ranger
+    - "main/dust" # Better du
+    - "main/gdu" # Better interactive du like ncdu
+    - "main/duf" # Better df
+
+    - "main/bat" # Better GNU cat
+    - "main/ripgrep" # Better GNU grep
+    - "main/sd" # Better GNU sed
+    - "extras/dasel" # JSON, YAML, TOML, XML and CSV query processor
+    - "extras/jqp" # Interactive jq
+    - "main/tree-sitter"
+    - "extras/universal-ctags" # Source code tagger for quick navigation like global
+    - "main/neovim" # Better vim
+
+    - "main/gping" # Better ping
+    - "main/dog" # Better dig
+    - "main/xh" # Better curl
+
+    - "main/delta" # git diff pager
+    - "extras/lazygit"
+    - "main/gh"
+    - "extras/tortoisesvn"
+
+    # Extra package managers
+    - "main/nvm@1.1.11"
+    - "extras/anaconda3@2023.07-1"
