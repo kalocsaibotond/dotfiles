@@ -13,7 +13,17 @@ Action<IConfigContext> doConfig = (context) =>
     context.AddFocusIndicator();
     var actionMenu = context.AddActionMenu();
 
-    context.WorkspaceContainer.CreateWorkspaces("1", "2", "3", "4", "5", "6", "7", "8", "9");
+    context.WorkspaceContainer.CreateWorkspaces(
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+    );
     context.CanMinimizeWindows = true; // false by default
 };
 return doConfig;

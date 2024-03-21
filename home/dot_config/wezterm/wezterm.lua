@@ -7,7 +7,9 @@ if wezterm.config_builder then
 end
 
 config.default_prog = {
-	"pwsh"
+	[[
+    pwsh -ExecutionPolicy Bypass
+  ]],
 }
 
 return config
