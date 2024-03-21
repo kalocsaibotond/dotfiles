@@ -1,2 +1,4 @@
-. .\Variables.ps1
-. .\Initialisations.ps1
+$ProfileLocation = Split-Path -Path $Profile.CurrentUserCurrentHost -Parent
+
+."$ProfileLocation\Variables.ps1"
+."$ProfileLocation\Initialisations.ps1"

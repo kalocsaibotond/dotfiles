@@ -1,9 +1,9 @@
 # XDG Base directories
-$XDG_DATA_HOME="$ENV:HOME\.local\share"
-$XDG_CONFIG_HOME="$ENV:HOME\.config"
-$XDG_STATE_HOME="$ENV:HOME\.local\state"
-$XDG_CACHE_HOME="$ENV:HOME\.cache"
+$XDG_DATA_HOME = "$HOME\.local\share"
+$XDG_CONFIG_HOME = "$HOME\.config"
+$XDG_STATE_HOME = "$HOME\.local\state"
+$XDG_CACHE_HOME = "$HOME\.cache"
 
 # Accessories
-$EDITOR=nvim
-$VISUAL=$EDITOR
+$EDITOR = "nvim"
+$VISUAL = $EDITOR
