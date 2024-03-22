@@ -1,0 +1,4 @@
+winget:
+  packages:
+    - "Microsoft.Dotnet.DesktopRuntime.6" # For pass-winmenu
+    - "Lyx.Lyx"
