@@ -54,6 +54,14 @@ scoop:
     - "main/gh"
     - "extras/tortoisesvn"
 
+    - extras/pass-winmenu-nogpg # Password manager
+    - main/gpg
+
+    # Miscellaneous
+    - main/qemu
+    - extras/inkscape
+    - extras/workspacer
+
     # Extra package managers
     - "main/nvm@1.1.11"
     - "extras/anaconda3@2023.07-1"
