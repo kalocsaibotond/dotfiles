@@ -1,6 +1,5 @@
 scoop:
-  buckets:
-    - "main"
+  buckets: # WARN: Git is required to install from buckets other than main
     - "extras"
   packages:
     # GNU utilities
@@ -23,9 +22,7 @@ scoop:
     - "main/procs" # Better ps
     - "main/hyperfine" # CLI benchmarking
     - "extras/wezterm"
-
     - "main/tldr" # Simpler manpages
-    - "main/ffmpeg" # Audio - video editing and conversion
 
     - "main/zoxide" # Directory jumper like z
     - "main/fd" # Better GNU find
@@ -54,12 +51,15 @@ scoop:
     - "main/gh"
     - "extras/tortoisesvn"
 
+    - "main/gpg" # For encryption
+    - "main/gopass" # For password management
+
+    - "main/ffmpeg" # Audio - video editing and conversion
+
     # Miscellaneous
-    - "main/gpg" # For password management
     - "main/qemu"
     - "extras/inkscape"
     - "extras/workspacer"
-    - "extras/pass-winmenu-nogpg" # Password manager
 
     # Extra package managers
     - "main/nvm"
