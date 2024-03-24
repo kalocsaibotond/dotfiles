@@ -3,14 +3,12 @@
 -- Add any additional autocmds here
 
 -- Chezmoi
-local chezmoi_worktree = vim.env.HOME .. "/.local/share/chezmoi/**"
--- chezmoi_worktree = vim.api.nvim_exec2(
--- 	"!chezmoi execute-template '{{.chezmoi.workingTree}}/**'", -- HACK: abusing chezmoi template execution
--- 	{ output = false }
--- )[0]
--- vim.print(chezmoi_worktree)  -- ize  ize ize
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = { chezmoi_worktree },
+	pattern = {
+		vim.fn.system(
+			"chezmoi execute-template '{{.chezmoi.workingTree}}/**'"
+		),
+	},
 	callback = function()
 		vim.schedule(require("chezmoi.commands.__edit").watch)
 	end,
