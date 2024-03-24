@@ -7,3 +7,13 @@ vim.keymap.set("n", "<space>rs", "<cmd>IronRepl<cr>")
 vim.keymap.set("n", "<space>rr", "<cmd>IronRestart<cr>")
 vim.keymap.set("n", "<space>rF", "<cmd>IronFocus<cr>")
 vim.keymap.set("n", "<space>rh", "<cmd>IronHide<cr>")
+
+-- Chezmoi
+local telescope = require("telescope")
+telescope.load_extension("chezmoi")
+vim.keymap.set(
+	"n",
+	"<leader>fz",
+	telescope.extensions.chezmoi.find_files,
+	{ desc = "Find Chezmoi Source File" }
+)

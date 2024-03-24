@@ -1,4 +1,4 @@
-return {  -- https://dev.to/rnrbarbosa/how-to-run-python-on-neovim-like-jupyter-3ln0
+return { -- https://dev.to/rnrbarbosa/how-to-run-python-on-neovim-like-jupyter-3ln0
   "Vigemus/iron.nvim",
   config = function(plugins, opts)
     local iron = require("iron.core")
@@ -9,22 +9,22 @@ return {  -- https://dev.to/rnrbarbosa/how-to-run-python-on-neovim-like-jupyter-
         scratch_repl = true,
         -- Your repl definitions come here
         repl_definition = {
-            python = {
-              command = {"ipython"},
-              -- format = require("iron.fts.common").bracketed_paste,
-            },
-            powershell = {
-              command = {"pwsh -ExecutionPolicy ByPass -NoExit"},
-              -- format = require("iron.fts.common").bracketed_paste,
-            },
-            sh = {
-              command = {"bash"},
-              -- format = require("iron.fts.common").bracketed_paste,
-            },
-            batch = {
-              command = {"cmd"},
-              -- format = require("iron.fts.common").bracketed_paste,
-            }
+          python = {
+            command = { "ipython" },
+            -- format = require("iron.fts.common").bracketed_paste,
+          },
+          powershell = {
+            command = { "pwsh -ExecutionPolicy ByPass -NoExit" },
+            -- format = require("iron.fts.common").bracketed_paste,
+          },
+          sh = {
+            command = { "bash" },
+            -- format = require("iron.fts.common").bracketed_paste,
+          },
+          batch = {
+            command = { "cmd" },
+            -- format = require("iron.fts.common").bracketed_paste,
+          },
         },
         -- How the repl window will be displayed
         -- See below for more information

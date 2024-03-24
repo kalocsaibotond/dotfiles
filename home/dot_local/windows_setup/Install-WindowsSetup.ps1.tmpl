@@ -34,7 +34,7 @@ winget install @(
 
 # Set up configuration
 
-.\Add-ContextMenuDir.ps1 @{
+Add-ContextMenuDir @{
     DisplayName = "WezTerm"
     ApplicationPath = "$(scoop prefix wezterm)\wezterm-gui.exe"
     ApplicationArgs = 'start --no-auto-connect --cwd "%V"'

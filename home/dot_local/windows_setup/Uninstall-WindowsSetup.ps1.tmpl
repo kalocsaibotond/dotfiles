@@ -2,7 +2,7 @@
 
 # Cleaning up configuration
 
-Remove-ContextMenuDir.ps1 -DisplayName "WezTerm"
+Remove-ContextMenuDir -DisplayName "WezTerm"
 
 $Targets = @(chezmoi managed --include files --path-style absolute)
 foreach ($Target in $Targets) {

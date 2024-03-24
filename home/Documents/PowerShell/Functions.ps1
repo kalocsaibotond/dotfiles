@@ -29,18 +29,18 @@ function Add-ContextMenuDir
 
     if ($Global){
         if (Test-Path $registryContextMenuLocation){
-            Remove-PSDrive HKCR | Out-Null
+            Remove-PSDrive HKCR
             New-PSDrive @{
                 PSProvider = "registry"
                 Root = "HKEY_CLASSES_ROOT"
                 Name = "HKCR"
-            ) | Out-Null
+            }
         } else {
-            New-PSDrive 
+            New-PSDrive @{
                 PSProvider = "registry" 
                 Root = "HKEY_CLASSES_ROOT"
                 Name = "HKCR"
-            ) | Out-Null
+            }
         }
         $psDriveClasses = "HKCR:"
     } else {
@@ -59,7 +59,7 @@ function Add-ContextMenuDir
             Join-Path $psDriveClasses $shell
         ) $DisplayName
 
-        New-Item -Path $registryPath -Force | Out-Null
+        New-Item -Path $registryPath -Force
         Set-ItemProperty @{
             Path = $registryPath
             Name = "(Default)"
@@ -72,7 +72,7 @@ function Add-ContextMenuDir
         }
  
         $commandPath = Join-Path $registryPath "command"
-        New-Item -Path $commandPath -Force | Out-Null
+        New-Item -Path $commandPath -Force
         Set-ItemProperty @{
             Path = $commandPath
             Name = "(Default)"
@@ -101,18 +101,18 @@ function Remove-ContextMenuDir
 
     if ($Global){
         if (Test-Path $registryContextMenuLocation){
-            Remove-PSDrive HKCR | Out-Null
+            Remove-PSDrive HKCR
             New-PSDrive @{
                 PSProvider = "registry"
                 Root = "HKEY_CLASSES_ROOT"
                 Name = "HKCR"
-            } | Out-Null
+            }
         } else {
             New-PSDrive @{
                 PSProvider = "registry"
                 Root = "HKEY_CLASSES_ROOT"
                 Name = "HKCR"
-            } | Out-Null
+            }
         }
         $psDriveClasses = "HKCR:"
     } else {
@@ -130,6 +130,6 @@ function Remove-ContextMenuDir
         $registryPath = Join-Path (
             Join-Path $psDriveClasses $shell
         ) $DisplayName
-        Remove-Item -Path $registryPath -Force -Recurse | Out-Null
+        Remove-Item -Path $registryPath -Force -Recurse
     }
 }
