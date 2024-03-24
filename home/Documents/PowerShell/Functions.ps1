@@ -30,11 +30,17 @@ function Add-ContextMenuDir
     if ($Global){
         if (Test-Path $registryContextMenuLocation){
             Remove-PSDrive HKCR | Out-Null
-            New-PSDrive -PSProvider registry -Root HKEY_CLASSES_ROOT `
-                -Name HKCR | Out-Null
+            New-PSDrive @{
+                PSProvider = "registry"
+                Root = "HKEY_CLASSES_ROOT"
+                Name = "HKCR"
+            ) | Out-Null
         } else {
-            New-PSDrive -PSProvider registry -Root HKEY_CLASSES_ROOT `
-                -Name HKCR | Out-Null
+            New-PSDrive 
+                PSProvider = "registry" 
+                Root = "HKEY_CLASSES_ROOT"
+                Name = "HKCR"
+            ) | Out-Null
         }
         $psDriveClasses = "HKCR:"
     } else {
@@ -42,26 +48,36 @@ function Add-ContextMenuDir
     }
 
     $ContextMenuDirRegeditEntries = @(
-        "Directory\Background\shell",
-        "Directory\shell",
-        "Folder\Background\shell",
-        "Folder\shell",
+        "Directory\Background\shell"
+        "Directory\shell"
+        "Folder\Background\shell"
+        "Folder\shell"
         "Drive\shell"
     )
     foreach($shell in $ContextMenuDirRegeditEntries){
-        $registryPath = Join-Path (Join-Path $psDriveClasses $shell) `
-            $DisplayName
+        $registryPath = Join-Path (
+            Join-Path $psDriveClasses $shell
+        ) $DisplayName
 
         New-Item -Path $registryPath -Force | Out-Null
-        Set-ItemProperty -Path $registryPath -Name "(Default)" `
-            -Value "Open $DisplayName here"
-        Set-ItemProperty -Path $registryPath -Name "Icon" `
-            -Value "$ApplicationPath"
+        Set-ItemProperty @{
+            Path = $registryPath
+            Name = "(Default)"
+            Value = "Open $DisplayName here"
+        }
+        Set-ItemProperty @{
+            Path = $registryPath
+            Name = "Icon"
+            Value = "$ApplicationPath"
+        }
  
         $commandPath = Join-Path $registryPath "command"
         New-Item -Path $commandPath -Force | Out-Null
-        Set-ItemProperty -Path $commandPath -Name "(Default)" `
-            -Value "$ApplicationPath $ApplicationArgs"
+        Set-ItemProperty @{
+            Path = $commandPath
+            Name = "(Default)"
+            Value = "$ApplicationPath $ApplicationArgs"
+        }
     }
 }
 
@@ -86,11 +102,17 @@ function Remove-ContextMenuDir
     if ($Global){
         if (Test-Path $registryContextMenuLocation){
             Remove-PSDrive HKCR | Out-Null
-            New-PSDrive -PSProvider registry -Root HKEY_CLASSES_ROOT `
-                -Name HKCR | Out-Null
+            New-PSDrive @{
+                PSProvider = "registry"
+                Root = "HKEY_CLASSES_ROOT"
+                Name = "HKCR"
+            } | Out-Null
         } else {
-            New-PSDrive -PSProvider registry -Root HKEY_CLASSES_ROOT `
-                -Name HKCR | Out-Null
+            New-PSDrive @{
+                PSProvider = "registry"
+                Root = "HKEY_CLASSES_ROOT"
+                Name = "HKCR"
+            } | Out-Null
         }
         $psDriveClasses = "HKCR:"
     } else {
@@ -98,15 +120,16 @@ function Remove-ContextMenuDir
     }
 
     $ContextMenuDirRegeditEntries = @(
-        "Directory\Background\shell",
-        "Directory\shell",
-        "Folder\Background\shell",
-        "Folder\shell",
+        "Directory\Background\shell"
+        "Directory\shell"
+        "Folder\Background\shell"
+        "Folder\shell"
         "Drive\shell"
     )
     foreach($shell in $ContextMenuDirRegeditEntries){
-        $registryPath = Join-Path (Join-Path $psDriveClasses $shell) `
-            $DisplayName
+        $registryPath = Join-Path (
+            Join-Path $psDriveClasses $shell
+        ) $DisplayName
         Remove-Item -Path $registryPath -Force -Recurse | Out-Null
     }
 }

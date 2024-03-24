@@ -1,0 +1,50 @@
+."..\..\Documents\PowerShell\Functions.ps1"
+
+# Install Scoop packages
+# NOTE: Scoop is the primary package manager for my environment
+
+irm get.scoop.sh | iex
+if (-Not (Get-Command git -ErrorAction SilentlyContinue)){
+    scoop install main/git  # Git is required to install other buckets
+}
+
+{{range .scoop.buckets -}}
+scoop bucket add {{. | quote}}
+{{- end}}
+
+scoop install @(
+    {{range .scoop.packages}}{{. | quote}}
+    {{end -}}
+    )
+
+if (-Not (Get-Command winget -ErrorAction SilentlyContinue)){
+    scoop install main/winget
+}
+
+# Install Winget packages
+
+winget install @(
+    {{range .winget.packages}}{{. | quote}}
+    {{end -}}
+    "--accept-source-agreements"
+    "--accept-package-agreements"
+    "--silent"
+    "--disable-interactivity"
+    )
+
+# Set up configuration
+
+.\Add-ContextMenuDir.ps1 @{
+    DisplayName = "WezTerm"
+    ApplicationPath = "$(scoop prefix wezterm)\wezterm-gui.exe"
+    ApplicationArgs = 'start --no-auto-connect --cwd "%V"'
+}
+
+nvm install lts
+nvm on
+Invoke-Expression "$(scoop prefix nvm)\nodejs\nodejs\npm install -g neovim"
+
+conda init powershell
+conda install -y -c conda-forge pynvim
+
+git config --global credential.helper manager

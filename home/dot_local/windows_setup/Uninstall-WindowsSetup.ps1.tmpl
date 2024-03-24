@@ -1,0 +1,30 @@
+."..\..\Documents\PowerShell\Functions.ps1"
+
+# Cleaning up configuration
+
+Remove-ContextMenuDir.ps1 -DisplayName "WezTerm"
+
+$Targets = @(chezmoi managed --include files --path-style absolute)
+foreach ($Target in $Targets) {
+    Remove-Item -Path $Target
+}
+chezmoi purge
+
+# Cleaning up installations
+# NOTE: Only Scoop, Git, and Winget remains
+
+winget uninstall @(
+    {{range .winget.packages}}{{. | quote}}
+    {{end -}}
+    "--purge"
+    "--accept-source-agreements"
+    "--accept-package-agreements"
+    "--silent"
+    "--disable-interactivity"
+    )
+
+scoop uninstall @(
+    {{range .scoop.packages}}{{. | quote}}
+    {{end -}}
+    "--purge"
+    )
