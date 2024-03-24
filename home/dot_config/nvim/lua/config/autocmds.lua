@@ -6,7 +6,7 @@
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	pattern = {
 		vim.fn.system(
-			"chezmoi execute-template '{{.chezmoi.workingTree}}/**'"
+			"chezmoi execute-template '{{.chezmoi.workingTree}}/**'" -- HACK: Abusing cli template execution
 		),
 	},
 	callback = function()
