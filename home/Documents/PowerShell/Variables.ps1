@@ -7,3 +7,7 @@ $ENV:XDG_CACHE_HOME = "$HOME\.cache"
 # Accessories
 $ENV:EDITOR = "nvim"
 $ENV:VISUAL = $EDITOR
+$ENV:PAGER = "moar"
+
+# Configuration
+$ENV:BAT_PAGER = "moar --no-linenumbers"

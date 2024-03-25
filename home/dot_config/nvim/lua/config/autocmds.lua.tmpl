@@ -4,11 +4,7 @@
 
 -- Chezmoi
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	pattern = {
-		vim.fn.system(
-			"chezmoi execute-template '{{.chezmoi.workingTree}}/**'" -- HACK: Abusing cli template execution
-		),
-	},
+	pattern = { "{{.chezmoi.workingTree}}/**" },
 	callback = function()
 		vim.schedule(require("chezmoi.commands.__edit").watch)
 	end,

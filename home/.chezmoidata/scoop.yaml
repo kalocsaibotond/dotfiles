@@ -10,7 +10,6 @@ scoop:
     - "main/sed"
     - "main/wget"
     - "extras/mc"
-    - "main/less"
     - "main/gawk"
 
     - "main/gnuplot"
@@ -34,6 +33,7 @@ scoop:
     - "main/duf" # Better df
 
     - "main/bat" # Better GNU cat
+    - "extras/moar" # Better GNU less
     - "main/ripgrep" # Better GNU grep
     - "main/sd" # Better GNU sed
     - "extras/dasel" # JSON, YAML, TOML, XML and CSV query processor
