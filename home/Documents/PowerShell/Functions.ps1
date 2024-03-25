@@ -1,3 +1,12 @@
+$ContextMenuDirRegeditEntries = @(
+    "Directory\Background\shell"
+    "Directory\shell"
+    "Folder\Background\shell"
+    "Folder\shell"
+    "Drive\shell"
+)
+
+
 function Add-ContextMenuDir
 {
     param (
@@ -47,13 +56,6 @@ function Add-ContextMenuDir
         $psDriveClasses = "HKCU:\SOFTWARE\Classes"
     }
 
-    $ContextMenuDirRegeditEntries = @(
-        "Directory\Background\shell"
-        "Directory\shell"
-        "Folder\Background\shell"
-        "Folder\shell"
-        "Drive\shell"
-    )
     foreach($shell in $ContextMenuDirRegeditEntries){
         $registryPath = Join-Path (
             Join-Path $psDriveClasses $shell
@@ -119,13 +121,6 @@ function Remove-ContextMenuDir
         $psDriveClasses = "HKCU:\SOFTWARE\Classes"
     }
 
-    $ContextMenuDirRegeditEntries = @(
-        "Directory\Background\shell"
-        "Directory\shell"
-        "Folder\Background\shell"
-        "Folder\shell"
-        "Drive\shell"
-    )
     foreach($shell in $ContextMenuDirRegeditEntries){
         $registryPath = Join-Path (
             Join-Path $psDriveClasses $shell
