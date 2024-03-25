@@ -8,6 +8,7 @@ $ENV:XDG_CACHE_HOME = "$HOME\.cache"
 $ENV:EDITOR = "nvim"
 $ENV:VISUAL = $EDITOR
 $ENV:PAGER = "moar"
+$ENV:MANPAGER = "moar"
 
 # Configuration
-$ENV:BAT_PAGER = "moar --no-linenumbers"
+$ENV:BAT_PAGER = "moar -no-linenumbers -quit-if-one-screen"
