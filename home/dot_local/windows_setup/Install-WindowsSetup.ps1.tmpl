@@ -3,8 +3,9 @@
 # Install Scoop packages
 # NOTE: Scoop is the primary package manager for my environment
 
-irm get.scoop.sh | iex
-if (-Not (Get-Command git -ErrorAction SilentlyContinue)){
+Invoke-RestMethod get.scoop.sh | Invoke-Expression
+
+if (-Not (Test-Command -Name git)){
     scoop install main/git  # Git is required to install other buckets
 }
 
@@ -17,7 +18,7 @@ scoop install @(
     {{end -}}
     )
 
-if (-Not (Get-Command winget -ErrorAction SilentlyContinue)){
+if (-Not (Test-Command -Name winget)){
     scoop install main/winget
 }
 
