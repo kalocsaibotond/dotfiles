@@ -10,11 +10,7 @@ scoop:
     - "main/sed"
     - "main/wget"
     - "extras/mc"
-    - "main/bc"
-    - "main/units"
     - "main/gawk"
-
-    - "main/gnuplot"
 
     # Terminal development workflow tools (beyond linux utilites)
     - "main/pwsh" # Cross-platform (better) powershell
@@ -57,6 +53,9 @@ scoop:
     - "main/gopass" # For password management
 
     - "main/ffmpeg" # Audio - video editing and conversion
+
+    - "main/gnuplot"
+    - "extras/qalculate"
 
     # Miscellaneous
     - "main/qemu"
