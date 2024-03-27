@@ -10,13 +10,12 @@ if (-Not (Test-Command -Name git)){
 }
 
 {{range .scoop.buckets -}}
-scoop bucket add {{. | quote}}
+scoop bucket add {{.}}
 {{- end}}
 
-scoop install @(
-    {{range .scoop.packages}}{{. | quote}}
-    {{end -}}
-    )
+scoop install `
+    {{range .scoop.packages}}{{.}} `
+    {{end}}
 
 if (-Not (Test-Command -Name winget)){
     scoop install main/winget
@@ -24,22 +23,20 @@ if (-Not (Test-Command -Name winget)){
 
 # Install Winget packages
 
-winget install @(
-    {{range .winget.packages}}{{. | quote}}
+winget install `
+    {{range .winget.packages}}{{.}} `
     {{end -}}
-    "--accept-source-agreements"
-    "--accept-package-agreements"
-    "--silent"
-    "--disable-interactivity"
-    )
+    --accept-source-agreements `
+    --accept-package-agreements `
+    --silent `
+    --disable-interactivity
 
 # Set up configuration
 
-Add-ContextMenuDir @{
-    DisplayName = "WezTerm"
-    ApplicationPath = "$(scoop prefix wezterm)\wezterm-gui.exe"
-    ApplicationArgs = 'start --no-auto-connect --cwd "%V"'
-}
+Add-ContextMenuDir `
+    -DisplayName "WezTerm" `
+    -ApplicationPath "$(scoop prefix wezterm)\wezterm-gui.exe" `
+    -ApplicationArgs 'start --no-auto-connect --cwd "%V"'
 
 nvm install lts
 nvm on

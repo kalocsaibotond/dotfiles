@@ -50,6 +50,9 @@ function Get-RegistryClasses
         Whether we want to add the context meny entry for all users.
     .PARAMETER Scope
         The scope of the registry PS drive's existence.
+    .EXAMPLE
+      PS> Get-RegistryClasses
+      Classes:
     #>
     param (
         [Parameter(
@@ -126,6 +129,11 @@ function Add-ContextMenuDir
         https://stackoverflow.com/questions/20449316/how-add-context-menu-item-to-windows-explorer-for-folders
     .LINK
         https://gist.github.com/flyxyz123/53ac952fe94a14482565f1d96e5704d5
+    .EXAMPLE
+        PS> Add-ContextMenuDir `
+        >>     -DisplayName "WezTerm" `
+        >>     -ApplicationPath "$(scoop prefix wezterm)\wezterm-gui.exe" `
+        >>     -ApplicationArgs 'start --no-auto-connect --cwd "%V"'
     #>
     [cmdletbinding()]
     param (
@@ -149,7 +157,7 @@ function Add-ContextMenuDir
             to the current working directory."
         )][string]$ApplicationArgs="",
         [Parameter(
-            Position = 4,
+            Position = 3,
             ValueFromPipelineByPropertyName = $true,
             HelpMessage = "Whether to add to context menu for all users.
             It requres administrator rigths
@@ -157,34 +165,35 @@ function Add-ContextMenuDir
         )][switch]$Global
     )
     BEGIN {
-        $RegistryClasses = Get-RegistryClasses -Scope "2" -Global $Global
+        $RegistryClasses = Get-RegistryClasses -Scope "2" -Global:$Global
     }
     PROCESS {
-        foreach($n in $DisplayName){
-            foreach($shell in $ContextMenuDirRegeditEntries){
-                $RegistryPath = Join-Path -Path (
-                    Join-Path -Path $RegistryClasses -ChildPath $shell
-                ) -ChildPath $n
+        foreach($shell in $ContextMenuDirRegeditEntries){
+            $RegistryPath = Join-Path -Path (
+                Join-Path -Path $RegistryClasses -ChildPath $shell
+            ) -ChildPath $DisplayName
 
-                New-Item -Path $RegistryPath -Force
-                Set-ItemProperty `  # Setting display text
-                    -Path $RegistryPath `
-                    -Name "(Default)" `
-                    -Value "Open $DisplayName here"
-                Set-ItemProperty `  # Setting icon
-                    -Path $RegistryPath `
-                    -Name "Icon" `
-                    -Value "$ApplicationPath"
+            New-Item -Path $RegistryPath -Force | Out-Null
+            # Setting display text
+            Set-ItemProperty `
+                -Path $RegistryPath `
+                -Name "(Default)" `
+                -Value "Open $DisplayName here"
+            # Setting display icon
+            Set-ItemProperty `
+                -Path $RegistryPath `
+                -Name "Icon" `
+                -Value "$ApplicationPath"
 
-                $commandPath = Join-Path `
-                    -Path $RegistryPath `
-                    -ChildPath "command"
-                New-Item -Path $commandPath -Force
-                Set-ItemProperty `  # Setting command to run
-                    -Path $commandPath `
-                    -Name "(Default)" `
-                    -Value "$ApplicationPath $ApplicationArgs"
-            }
+            $commandPath = Join-Path `
+                -Path $RegistryPath `
+                -ChildPath "command"
+            New-Item -Path $commandPath -Force | Out-Null
+            # Setting command to run
+            Set-ItemProperty `
+                -Path $commandPath `
+                -Name "(Default)" `
+                -Value "$ApplicationPath $ApplicationArgs"
         }
     }
 }
@@ -205,7 +214,7 @@ function Remove-ContextMenuDir
         Whether to remove from context menu for all users. This requires 
         administrator rights.
     .EXAMPLE
-        Remove-ContextMenuDir -DisplayName "WezTerm"
+        PS> Remove-ContextMenuDir -DisplayName "WezTerm"
     #>
     [cmdletbinding()]
     param (
@@ -217,7 +226,7 @@ function Remove-ContextMenuDir
             HelpMessage = "Display name for the context menu option."
         )][string[]]$DisplayName,
         [Parameter(
-            Position = 3,
+            Position = 1,
             ValueFromPipelineByPropertyName = $true,
             HelpMessage = "Whether to add to context menu for all users.
             It requres administrator rigths because modifications
@@ -226,7 +235,7 @@ function Remove-ContextMenuDir
 
     )
     BEGIN {
-        $RegistryClasses = Get-RegistryClasses -Scope "2" -Global $Global
+        $RegistryClasses = Get-RegistryClasses -Scope "2" -Global:$Global
     }
     PROCESS { 
         foreach($n in $DisplayName){
