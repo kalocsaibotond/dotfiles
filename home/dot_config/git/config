@@ -1,2 +1,2 @@
 [include]
-	path = ./delta_page
+	path = delta_pager.inc
