@@ -37,6 +37,9 @@ Add-ContextMenuDir `
     -DisplayName "WezTerm" `
     -ApplicationPath "$(scoop prefix wezterm)\wezterm-gui.exe" `
     -ApplicationArgs 'start --no-auto-connect --cwd "%V"'
+reg import "$(scoop prefix pwsh)\install-explorer-context.reg"
+reg import "$(scoop prefix pwsh)\install-explorer-context.reg"  # needs double run
+reg import "$(scoop prefix pwsh)\install-file-context.reg"
 
 nvm install lts
 nvm on

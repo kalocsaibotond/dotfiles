@@ -71,7 +71,7 @@ function Get-RegistryClasses
     )
     if ($Global){
         $ClassDrives = Get-PSDrive -PSProvider "registry" | Where-Object {
-            $_.Root -eq "HKEY_CLASSES_ROOT"
+            $_.Root -eq "HKEY_LOCAL_MACHINE\SOFTWARE\Classes"
         }
         if ($ClassDrives){  # If already exists then use it
             return $ClassDrives[0].Name + ":"
@@ -79,7 +79,7 @@ function Get-RegistryClasses
             New-PSDrive `
                 -Name "Classes" `
                 -PSProvider "registry" `
-                -Root "HKEY_CLASSES_ROOT" `
+                -Root "HKEY_LOCAL_MACHINE\SOFTWARE\Classes" `
                 -Scope $Scope | Out-Null
         }
     } else {

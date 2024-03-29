@@ -3,6 +3,8 @@
 # Cleaning up configuration
 
 Remove-ContextMenuDir -DisplayName "WezTerm"
+reg import "$(scoop prefix pwsh)\uninstall-explorer-context.reg"  # needs double run
+reg import "$(scoop prefix pwsh)\uninstall-file-context.reg"
 
 $Targets = @(chezmoi managed --include files --path-style absolute)
 foreach ($Target in $Targets) {
