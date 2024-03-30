@@ -1,6 +1,7 @@
 scoop:
   buckets: # WARN: Git is required to install from buckets other than main
     - "extras"
+    - "nerd-fonts"
   packages:
     # GNU utilities
     - "main/mingw-winlibs"
@@ -19,6 +20,7 @@ scoop:
     - "main/procs" # Better ps
     - "main/hyperfine" # CLI benchmarking
     - "extras/wezterm"
+    - "nerd-fonts/OpenDyslexic-NF"
     - "main/tldr" # Simpler manpages
 
     - "main/zoxide" # Directory jumper like z
