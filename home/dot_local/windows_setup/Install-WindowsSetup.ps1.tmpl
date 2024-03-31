@@ -1,4 +1,5 @@
 ."..\..\Documents\PowerShell\Functions.ps1"
+."..\..\Documents\PowerShell\Variables.ps1"
 
 # Install Scoop packages
 # NOTE: Scoop is the primary package manager for my environment
@@ -33,12 +34,13 @@ winget install `
 
 # Set up configuration
 
+Set-EnvironmentVariablesSetup -Scope "User"  # Installign environment variables
 Add-ContextMenuDir `
     -DisplayName "WezTerm" `
     -ApplicationPath "$(scoop prefix wezterm)\wezterm-gui.exe" `
     -ApplicationArgs 'start --no-auto-connect --cwd "%V"'
 reg import "$(scoop prefix pwsh)\install-explorer-context.reg"
-reg import "$(scoop prefix pwsh)\install-explorer-context.reg"  # needs double run
+reg import "$(scoop prefix pwsh)\install-explorer-context.reg"  # needs double run to work
 reg import "$(scoop prefix pwsh)\install-file-context.reg"
 
 nvm install lts
