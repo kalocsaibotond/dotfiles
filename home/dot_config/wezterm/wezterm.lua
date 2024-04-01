@@ -33,6 +33,7 @@ if wezterm.target_triple:find("windows") then
 	end
 end
 
+config.window_decorations = "RESIZE"
 -- Things to do on gui startup
 wezterm.on("gui-startup", function()
 	local tab, pane, window = wezterm.mux.spawn_window({})
@@ -41,5 +42,6 @@ wezterm.on("gui-startup", function()
 end)
 
 config.font = wezterm.font("OpenDyslexicM Nerd Font Mono")
+config.font_size = 10
 
 return config
