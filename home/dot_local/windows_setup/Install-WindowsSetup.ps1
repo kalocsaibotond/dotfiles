@@ -6,17 +6,7 @@
 
 Invoke-RestMethod get.scoop.sh | Invoke-Expression
 
-if (-Not (Test-Command -Name git)){
-    scoop install main/git  # Git is required to install other buckets
-}
-
-{{range .scoop.buckets -}}
-scoop bucket add {{.}}
-{{- end}}
-
-scoop install `
-    {{range .scoop.packages}}{{.}} `
-    {{end}}
+scoop install .\scoop_export.json
 
 if (-Not (Test-Command -Name winget)){
     scoop install main/winget
@@ -24,12 +14,10 @@ if (-Not (Test-Command -Name winget)){
 
 # Install Winget packages
 
-winget install `
-    {{range .winget.packages}}{{.}} `
-    {{end -}}
+winget import `
+    .\winget_export.json `
     --accept-source-agreements `
     --accept-package-agreements `
-    --silent `
     --disable-interactivity
 
 # Set up configuration

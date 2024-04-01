@@ -1,8 +1,14 @@
-$EnvironmentVariablesSetup = @{
-    {{range $var_name, $var_value := .environment_variables -}}
-    {{$var_name}} = "{{$var_value}}"
-    {{end -}}
-}
+$EnvironmentVarablesSetup = @{
+    XDG_DATA_HOME = "$HOME/.local/share"
+    XDG_CONFIG_HOME = "$HOME/.confg"
+    XDG_STATE_HOME = "$HOME/.local/state"
+    XDG_CACHE_HOME = "$HOME/.cache"
+    EDITOR = "nvim"
+    VISUAL = "nvim"
+    PAGER = "moar"
+    MANPAGER = "moar"
+    BAT_PAGER = "moar -no-linenumbers -quit-if-one-screen"
+  }
 
 
 function Set-EnvironmentVariablesSetup

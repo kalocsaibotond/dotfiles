@@ -1,0 +1,273 @@
+{
+  "buckets": [
+    {
+      "Name": "extras",
+      "Source": "https://github.com/ScoopInstaller/Extras"
+    },
+    {
+      "Name": "main",
+      "Source": "https://github.com/ScoopInstaller/Main"
+    },
+    {
+      "Name": "nerd-fonts",
+      "Source": "https://github.com/matthewjberger/scoop-nerd-fonts"
+    }
+  ],
+  "apps": [
+    {
+      "Info": "",
+      "Source": "main",
+      "Name": "mingw-winlibs"
+    },
+    {
+      "Info": "",
+      "Source": "main",
+      "Name": "uutils-coreutils"
+    },
+    {
+      "Info": "",
+      "Source": "main",
+      "Name": "diffutils"
+    },
+    {
+      "Info": "",
+      "Source": "main",
+      "Name": "patch"
+    },
+    {
+      "Info": "",
+      "Source": "main",
+      "Name": "sed"
+    },
+    {
+      "Info": "",
+      "Source": "main",
+      "Name": "wget"
+    },
+    {
+      "Info": "",
+      "Source": "extras",
+      "Name": "mc"
+    },
+    {
+      "Info": "",
+      "Source": "main",
+      "Name": "gawk"
+    },
+    {
+      "Info": "Better powershell",
+      "Source": "main",
+      "Name": "pwsh"
+    },
+    {
+      "Info": "",
+      "Source": "main",
+      "Name": "sudo"
+    },
+    {
+      "Info": "Better GNU top",
+      "Source": "main",
+      "Name": "btop"
+    },
+    {
+      "Info": "Better GNU ps",
+      "Source": "main",
+      "Name": "procs"
+    },
+    {
+      "Info": "CLI benchmarking",
+      "Source": "main",
+      "Name": "hyperfine"
+    },
+    {
+      "Info": "Highly configurable terminal emulator",
+      "Source": "extras",
+      "Name": "wezterm"
+    },
+    {
+      "Info": "Fonts with augmented readability",
+      "Source": "nerd-fonts",
+      "Name": "OpenDyslexic-NF"
+    },
+    {
+      "Info": "CLI hint",
+      "Source": "main",
+      "Name": "tldr"
+    },
+    {
+      "Info": "Directory jumper like z",
+      "Source": "main",
+      "Name": "zoxide"
+    },
+    {
+      "Info": "Better gnu find",
+      "Source": "main",
+      "Name": "fd"
+    },
+    {
+      "Info": "Fuzzy finder",
+      "Source": "main",
+      "Name": "fzf"
+    },
+    {
+      "Info": "Better GNU ls",
+      "Source": "main",
+      "Name": "eza"
+    },
+    {
+      "Info": "File manager like ranger",
+      "Source": "main",
+      "Name": "lf"
+    },
+    {
+      "Info": "Better GNU du",
+      "Source": "main",
+      "Name": "dust"
+    },
+    {
+      "Info": "Better interactive du like ncdu",
+      "Source": "main",
+      "Name": "gdu"
+    },
+    {
+      "Info": "Better GNU df",
+      "Source": "main",
+      "Name": "duf"
+    },
+    {
+      "Info": "Better GNU cat",
+      "Source": "main",
+      "Name": "bat"
+    },
+    {
+      "Info": "Better GNU less",
+      "Source": "extras",
+      "Name": "moar"
+    },
+    {
+      "Info": "Better GNU grep",
+      "Source": "main",
+      "Name": "ripgrep"
+    },
+    {
+      "Info": "Better GNU sed",
+      "Source": "main",
+      "Name": "sd"
+    },
+    {
+      "Info": "JSON, YAML, TOML, XML and CSV query processor",
+      "Source": "extras",
+      "Name": "dasel"
+    },
+    {
+      "Info": "Interactive TUI jq",
+      "Source": "extras",
+      "Name": "jqp"
+    },
+    {
+      "Info": "Parser generator tool",
+      "Source": "main",
+      "Name": "tree-sitter"
+    },
+    {
+      "Info": "Source code tagger for quick navigation, like global",
+      "Source": "extras",
+      "Name": "universal-ctags"
+    },
+    {
+      "Info": "Better Vim",
+      "Source": "main",
+      "Name": "neovim"
+    },
+    {
+      "Info": "Better ping",
+      "Source": "main",
+      "Name": "gping"
+    },
+    {
+      "Info": "Better dig",
+      "Source": "main",
+      "Name": "dog"
+    },
+    {
+      "Info": "Better curl",
+      "Source": "main",
+      "Name": "xh"
+    },
+    {
+      "Info": "Git version control system",
+      "Source": "main",
+      "Name": "git"
+    },
+    {
+      "Info": "Git diff pager",
+      "Source": "main",
+      "Name": "delta"
+    },
+    {
+      "Info": "Git TUI for lazy people",
+      "Source": "extras",
+      "Name": "lazygit"
+    },
+    {
+      "Info": "Github CLI tool",
+      "Source": "main",
+      "Name": "gh"
+    },
+    {
+      "Info": "SVN version control system",
+      "Source": "extras",
+      "Name": "tortoisesvn"
+    },
+    {
+      "Info": "Encryption CLI tool",
+      "Source": "main",
+      "Name": "gpg"
+    },
+    {
+      "Info": "CLI password manager",
+      "Source": "main",
+      "Name": "gopass"
+    },
+    {
+      "Info": "Audio, video editing and converting CLI tool",
+      "Source": "main",
+      "Name": "ffmpeg"
+    },
+    {
+      "Info": "CLI plotting tool",
+      "Source": "main",
+      "Name": "gnuplot"
+    },
+    {
+      "Info": "Advanced CLI calculator",
+      "Source": "extras",
+      "Name": "qalculate"
+    },
+    {
+      "Info": "CLi virtual machine emulator",
+      "Source": "main",
+      "Name": "qemu"
+    },
+    {
+      "Info": "Window manager that is suckless as much as possible on windows",
+      "Source": "extras",
+      "Name": "workspacer"
+    },
+    {
+      "Info": "GUI vector graphics editor",
+      "Source": "extras",
+      "Name": "inkscape"
+    },
+    {
+      "Info": "Version manager for node.js",
+      "Source": "main",
+      "Name": "nvm"
+    },
+    {
+      "Info": "Package manager for data science and machine learning",
+      "Source": "extras",
+      "Name": "anaconda3"
+    }
+  ]
+}

@@ -14,19 +14,30 @@ foreach ($Target in $Targets) {
 chezmoi purge
 
 # Cleaning up installations
-# NOTE: Only Scoop, Git, and Winget remains
+# NOTE: Only Scoop and Winget remains
 
+$WingetPackages = (
+    Get-Content -Path .\winget_export.json -Raw | ConvertFrom-Json
+    ).Sources.Packages | Foreach-Object {
+        $_.PackageIdentifier
+    }
 winget uninstall `
-    {{range .winget.packages}}{{.}} `
-    {{end -}}
+    @WingetPackages `
     --purge `
     --accept-source-agreements `
     --accept-package-agreements `
     --silent `
     --disable-interactivity
 
+$ScoopExport = Get-Content -Path .\scoop_export.json -Raw | ConvertFrom-Json
+$ScoopPackages = $ScoopExport.apps | Foreach-Object {
+    "$($_.Source)/$($_.Name)"
+    }
 scoop uninstall `
-    {{range .scoop.packages}}{{.}} `
-    {{end -}}
+    @ScoopPackages `
     --purge
-
+foreach($bucket in $ScoopExport.buckets) {
+    if("main" -ne $bucket.Name){
+      scoop bucket rm $bucket.Name
+    }
+}
