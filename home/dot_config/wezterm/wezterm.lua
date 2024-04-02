@@ -34,9 +34,12 @@ if wezterm.target_triple:find("windows") then
 end
 
 -- Rendering settings
-config.front_end = "WebGpu"
-config.webgpu_power_preference = "LowPower"
-config.window_decorations = "RESIZE"
+config.animation_fps = 1
+config.cursor_blink_ease_in = "Constant"
+config.cursor_blink_ease_out = "Constant"
+config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
+config.adjust_window_size_when_changing_font_size = false
+config.window_close_confirmation = "NeverPrompt"
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 wezterm.on("gui-startup", function()
@@ -53,6 +56,11 @@ config.keys = {
 		key = "Enter",
 		mods = "CTRL|SHIFT",
 		action = wezterm.action.ToggleFullScreen,
+	},
+	{ -- Eliminating window close confirmation
+		key = "w",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.CloseCurrentTab({ confirm = false }),
 	},
 }
 
