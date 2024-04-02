@@ -1,8 +1,8 @@
-$EnvironmentVarablesSetup = @{
-    XDG_DATA_HOME = "$HOME/.local/share"
-    XDG_CONFIG_HOME = "$HOME/.confg"
-    XDG_STATE_HOME = "$HOME/.local/state"
-    XDG_CACHE_HOME = "$HOME/.cache"
+$EnvironmentVariablesSetup = @{
+    XDG_DATA_HOME = "$HOME\.local/share"
+    XDG_CONFIG_HOME = "$HOME\.confg"
+    XDG_STATE_HOME = "$HOME\.local/state"
+    XDG_CACHE_HOME = "$HOME\.cache"
     EDITOR = "nvim"
     VISUAL = "nvim"
     PAGER = "moar"
