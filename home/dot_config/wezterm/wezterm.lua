@@ -33,7 +33,9 @@ if wezterm.target_triple:find("windows") then
 	end
 end
 
--- Display settings
+-- Rendering settings
+config.front_end = "WebGPU"
+config.webgpu_power_preference = "HighPerformance"
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
 wezterm.on("gui-startup", function()
