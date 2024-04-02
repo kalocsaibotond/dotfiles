@@ -34,9 +34,10 @@ if wezterm.target_triple:find("windows") then
 end
 
 -- Rendering settings
-config.front_end = "WebGPU"
-config.webgpu_power_preference = "HighPerformance"
+config.front_end = "WebGpu"
+config.webgpu_power_preference = "LowPower"
 config.window_decorations = "RESIZE"
+config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 wezterm.on("gui-startup", function()
 	local tab, pane, window = wezterm.mux.spawn_window({})
