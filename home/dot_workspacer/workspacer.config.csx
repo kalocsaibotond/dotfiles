@@ -1,3 +1,8 @@
+#r "C:\Users\botond.kalocsai\scoop\apps\workspacer\current\workspacer.Shared.dll"
+#r "C:\Users\botond.kalocsai\scoop\apps\workspacer\current\plugins\workspacer.Bar\workspacer.Bar.dll"
+#r "C:\Users\botond.kalocsai\scoop\apps\workspacer\current\plugins\workspacer.ActionMenu\workspacer.ActionMenu.dll"
+#r "C:\Users\botond.kalocsai\scoop\apps\workspacer\current\plugins\workspacer.FocusIndicator\workspacer.FocusIndicator.dll"
+
 using System;
 using workspacer;
 using workspacer.Bar;
