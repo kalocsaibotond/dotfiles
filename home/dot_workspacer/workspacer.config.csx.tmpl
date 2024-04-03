@@ -3,21 +3,66 @@
 #r "{{- .chezmoi.homeDir -}}\scoop\apps\workspacer\current\plugins\workspacer.ActionMenu\workspacer.ActionMenu.dll"
 #r "{{- .chezmoi.homeDir -}}\scoop\apps\workspacer\current\plugins\workspacer.FocusIndicator\workspacer.FocusIndicator.dll"
 
+
 using System;
 using workspacer;
 using workspacer.Bar;
+using workspacer.Bar.Widgets;
 using workspacer.ActionMenu;
 using workspacer.FocusIndicator;
+
 
 Action<IConfigContext> doConfig = (context) =>
 {
     // Uncomment to switch update branch (or to disable updates)
     //context.Branch = Branch.None;
 
-    context.AddBar();
-    context.AddFocusIndicator();
-    var actionMenu = context.AddActionMenu();
+    /* Variables */
+    var fontSize = 9;
+    var barHeight = 19;
+    var fontName = "Cascadia Code PL";
+    var background = new Color(0x0, 0x0, 0x0);
 
+    /* Bar */
+    context.AddBar(
+        new BarPluginConfig()
+        {
+            FontSize = fontSize,
+            BarHeight = barHeight,
+            FontName = fontName,
+            DefaultWidgetBackground = background,
+            LeftWidgets = () => new IBarWidget[]
+            {
+                new WorkspaceWidget(),
+                new TextWidget(": "),
+                new TitleWidget() {
+                    IsShortTitle = true
+                }
+            },
+            RightWidgets = () => new IBarWidget[]
+            {
+                new BatteryWidget(),
+                new TimeWidget(1000, "HH:mm:ss dd-MMM-yyyy"),
+                new ActiveLayoutWidget(),
+            }
+        }
+    );
+
+    /* Bar focus indicator */
+    context.AddFocusIndicator();
+
+    /* Action menu */
+    var actionMenu = context.AddActionMenu(
+        new ActionMenuPluginConfig()
+        {
+            MenuHeight = barHeight,
+            FontSize = fontSize,
+            FontName = fontName,
+            Background = background,
+        }
+    );
+
+    /* Workspaces */
     context.WorkspaceContainer.CreateWorkspaces(
         "1",
         "2",
