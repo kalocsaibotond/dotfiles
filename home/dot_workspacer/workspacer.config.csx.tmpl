@@ -1,7 +1,52 @@
-#r "{{- .chezmoi.homeDir -}}\scoop\apps\workspacer\current\workspacer.Shared.dll"
-#r "{{- .chezmoi.homeDir -}}\scoop\apps\workspacer\current\plugins\workspacer.Bar\workspacer.Bar.dll"
-#r "{{- .chezmoi.homeDir -}}\scoop\apps\workspacer\current\plugins\workspacer.ActionMenu\workspacer.ActionMenu.dll"
-#r "{{- .chezmoi.homeDir -}}\scoop\apps\workspacer\current\plugins\workspacer.FocusIndicator\workspacer.FocusIndicator.dll"
+{{-
+$install_paths := (list )
+-}}
+{{- 
+$install_paths := append $install_paths ( joinPath
+    (env "ProgramFiles")
+    "Winget"
+    "Packages"
+    "Workspacer"
+)
+-}}
+{{- 
+$install_paths := append $install_paths ( joinPath
+    (env "LOCALAPPDATA")
+    "Microsoft"
+    "Winget"
+    "Packages"
+    "Workspacer"
+
+)
+-}}
+{{- 
+$install_paths := append $install_paths ( joinPath
+    (env "PROGRAMDATA")
+    "scoop"
+    "apps"
+    "workspacer"
+    "current"
+)
+-}}
+{{- 
+$install_paths := append $install_paths ( joinPath
+    .chezmoi.homeDir
+    "scoop"
+    "apps"
+    "workspacer"
+    "current"
+)
+-}}
+{{- $workpacer_dir := "." -}}
+{{- range $install_path := $install_paths -}}
+{{-     if isExecutable (joinPath $install_path "workspacer.exe") -}}
+{{-         $workpacer_dir = $install_path -}}
+{{-     end -}}
+{{- end -}}
+#r "{{- $workpacer_dir -}}\workspacer.Shared.dll"
+#r "{{- $workpacer_dir -}}\plugins\workspacer.Bar\workspacer.Bar.dll"
+#r "{{- $workpacer_dir -}}\plugins\workspacer.ActionMenu\workspacer.ActionMenu.dll"
+#r "{{- $workpacer_dir -}}\plugins\workspacer.FocusIndicator\workspacer.FocusIndicator.dll"
 
 
 using System;
