@@ -1,12 +1,23 @@
 {{-
 $install_paths := (list )
 -}}
+{{- /* Installation priority list, assuming standard installations */ -}}
 {{- 
 $install_paths := append $install_paths ( joinPath
-    (env "ProgramFiles")
-    "Winget"
-    "Packages"
-    "Workspacer"
+    .chezmoi.homeDir
+    "scoop"
+    "apps"
+    "workspacer"
+    "current"
+    )
+-}}
+{{- 
+$install_paths := append $install_paths ( joinPath
+    (env "PROGRAMDATA")
+    "scoop"
+    "apps"
+    "workspacer"
+    "current"
 )
 -}}
 {{- 
@@ -21,26 +32,17 @@ $install_paths := append $install_paths ( joinPath
 -}}
 {{- 
 $install_paths := append $install_paths ( joinPath
-    (env "PROGRAMDATA")
-    "scoop"
-    "apps"
-    "workspacer"
-    "current"
-)
--}}
-{{- 
-$install_paths := append $install_paths ( joinPath
-    .chezmoi.homeDir
-    "scoop"
-    "apps"
-    "workspacer"
-    "current"
+    (env "ProgramFiles")
+    "Winget"
+    "Packages"
+    "Workspacer"
 )
 -}}
 {{- $workpacer_dir := "." -}}
 {{- range $install_path := $install_paths -}}
 {{-     if isExecutable (joinPath $install_path "workspacer.exe") -}}
 {{-         $workpacer_dir = $install_path -}}
+{{-         break -}}
 {{-     end -}}
 {{- end -}}
 #r "{{- $workpacer_dir -}}\workspacer.Shared.dll"
