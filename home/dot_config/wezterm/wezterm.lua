@@ -1,5 +1,13 @@
 local wezterm = require("wezterm") -- wezterm api
 
+-- Maximise and full screen on startup
+wezterm.on("gui-startup", function(cmd)
+	-- https://wezfurlong.org/wezterm/config/lua/gui-events/gui-startup.html
+	local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
+	window:gui_window():maximize() -- Maximize window
+	window:gui_window():toggle_fullscreen() -- Toggle to Full screen
+end)
+
 -- Initialising configuration table
 local config = {}
 
@@ -42,12 +50,6 @@ config.adjust_window_size_when_changing_font_size = false
 config.window_close_confirmation = "NeverPrompt"
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
-wezterm.on("gui-startup", function(cmd)
-	-- https://wezfurlong.org/wezterm/config/lua/gui-events/gui-startup.html
-	local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
-	window:gui_window():maximize() -- Maximize window
-	window:gui_window():toggle_fullscreen() -- Toggle to Full screen
-end)
 config.font = wezterm.font("OpenDyslexicM Nerd Font Mono")
 config.font_size = 10
 
