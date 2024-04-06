@@ -65,6 +65,16 @@ config.keys = {
 		mods = "CTRL|SHIFT",
 		action = wezterm.action.CloseCurrentTab({ confirm = false }),
 	},
+	{
+		key = "Enter",
+		mods = "CTRL",
+		action = wezterm.action({ SendString = "\x1b[13;5u" }),
+	},
+	{
+		key = "Enter",
+		mods = "SHIFT",
+		action = wezterm.action({ SendString = "\x1b[13;2u" }),
+	},
 }
 
 return config
