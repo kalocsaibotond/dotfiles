@@ -9,11 +9,14 @@ local psep = package.config:sub(1, 1) -- Directory path separator on platform
 -- Setting ruler
 vim.opt.colorcolumn = "79"
 
+-- Setting vertical cursor line
+vim.opt.cursorcolumn = true
+
 -- Setting ergonomic nerdfont for gui usage, especially for neovim-qt
 vim.opt.guifont = "OpenDyslexicM Nerd Font Mono:h10"
 
 -- Setting default shell
-if "cmd.exe" == vim.o.shell and vim.fn.executable("powershell") then
+if vim.fn.executable("powershell") then
 	if vim.fn.executable("pwsh") then
 		vim.o.shell = "pwsh"
 	else
