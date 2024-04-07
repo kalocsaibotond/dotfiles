@@ -230,6 +230,11 @@
       "Name": "gopass"
     },
     {
+      "Info": "Image editing and manipulation cli tool",
+      "Source": "main",
+      "Name": "imagemagick"
+    },
+    {
       "Info": "Audio, video editing and converting CLI tool",
       "Source": "main",
       "Name": "ffmpeg"
