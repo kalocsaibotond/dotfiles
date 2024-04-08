@@ -70,6 +70,29 @@ Action<IConfigContext> doConfig = (context) =>
     var fontName = "Cascadia Code PL";
     var background = new Color(0x0, 0x0, 0x0);
 
+    /*
+    Resetting default modifier key
+    https://github.com/workspacer/workspacer/issues/195#issuecomment-903926944
+    */
+    KeyModifiers mod = KeyModifiers.Alt | KeyModifiers.Win;
+    Type keybindManagerType = context.Keybinds.GetType();
+    var subscribeDefaultsMethod = keybindManagerType.GetMethod(
+        "SubscribeDefaults",
+        new Type[] { typeof(KeyModifiers) }
+    );
+    if (subscribeDefaultsMethod != null) {
+        context.Keybinds.UnsubscribeAll();
+        subscribeDefaultsMethod.Invoke(
+            context.Keybinds,
+            new object[] { mod }
+        );
+    } else {
+        Console.WriteLine(
+            "Could not change modifier key: " +
+            "SubscribeDefaults method not found."
+        );
+    }
+
     /* Bar */
     context.AddBar(
         new BarPluginConfig()
@@ -102,6 +125,10 @@ Action<IConfigContext> doConfig = (context) =>
     var actionMenu = context.AddActionMenu(
         new ActionMenuPluginConfig()
         {
+            RegisterKeybind = true,
+            KeybindMod = mod,
+            KeybindKey = Keys.P,
+
             MenuHeight = barHeight,
             FontSize = fontSize,
             FontName = fontName,
@@ -121,6 +148,7 @@ Action<IConfigContext> doConfig = (context) =>
         "8",
         "9"
     );
+
     context.CanMinimizeWindows = true; // false by default
 };
 return doConfig;
