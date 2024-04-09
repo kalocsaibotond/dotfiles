@@ -55,11 +55,6 @@ config.font_size = 10
 
 -- Custom keybindings
 config.keys = {
-	{ -- ALT - Enter is used by workspacer
-		key = "Enter",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action.ToggleFullScreen,
-	},
 	{ -- Eliminating window close confirmation
 		key = "w",
 		mods = "CTRL|SHIFT",
