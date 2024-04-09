@@ -10,20 +10,23 @@ return { -- https://dev.to/rnrbarbosa/how-to-run-python-on-neovim-like-jupyter-3
 				-- Your repl definitions come here
 				repl_definition = {
 					python = {
-						command = { "ipython", "--pylab=qt" },
-						-- format = require("iron.fts.common").bracketed_paste,
+						command = {
+							"ipython",
+							"--pylab=qt",
+						},
+						format = require("iron.fts.common").bracketed_paste_python,
 					},
 					powershell = {
 						command = { "pwsh -ExecutionPolicy ByPass -NoExit" },
-						-- format = require("iron.fts.common").bracketed_paste,
+						format = require("iron.fts.common").bracketed_paste,
 					},
 					sh = {
 						command = { "bash" },
-						-- format = require("iron.fts.common").bracketed_paste,
+						format = require("iron.fts.common").bracketed_paste,
 					},
 					batch = {
 						command = { "cmd" },
-						-- format = require("iron.fts.common").bracketed_paste,
+						format = require("iron.fts.common").bracketed_paste,
 					},
 				},
 				-- How the repl window will be displayed
