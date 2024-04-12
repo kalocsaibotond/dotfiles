@@ -13,12 +13,17 @@ return { -- https://dev.to/rnrbarbosa/how-to-run-python-on-neovim-like-jupyter-3
 						command = {
 							"ipython",
 							"--pylab=qt",
-              "--TerminalInteractiveShell.editing_mode=vi"
+							-- "--TerminalInteractiveShell.editing_mode=vi",  -- Paste Bug
 						},
 						format = require("iron.fts.common").bracketed_paste_python,
 					},
 					powershell = {
-						command = { "pwsh -ExecutionPolicy ByPass -NoExit" },
+						command = {
+							"pwsh",
+							"-ExecutionPolicy",
+							"ByPass",
+							"-NoExit",
+						},
 						format = require("iron.fts.common").bracketed_paste,
 					},
 					sh = {
