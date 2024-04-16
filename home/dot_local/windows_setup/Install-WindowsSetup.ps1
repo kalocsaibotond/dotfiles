@@ -27,6 +27,10 @@ Add-ContextMenuDir `
     -DisplayName "WezTerm" `
     -ApplicationPath "$(scoop prefix wezterm)\wezterm-gui.exe" `
     -ApplicationArgs 'start --no-auto-connect --cwd "%V"'
+Add-ContextMenuDir `
+    -DisplayName "Neovim Qt" `
+    -ApplicationPath "$(scoop prefix neovim)\bin\nvim-qt.exe" `
+    -ApplicationArgs ""
 reg import "$(scoop prefix pwsh)\install-explorer-context.reg"
 reg import "$(scoop prefix pwsh)\install-explorer-context.reg"  # needs double run to work
 reg import "$(scoop prefix pwsh)\install-file-context.reg"
