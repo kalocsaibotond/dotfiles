@@ -11,8 +11,18 @@ else
 	vim.keymap.set("n", "<space>rF", "<cmd>IronFocus<cr>")
 	vim.keymap.set("n", "<space>rh", "<cmd>IronHide<cr>")
 
-	-- Chezmoi
 	local telescope = require("telescope")
+
+	-- Zoxide
+	telescope.load_extension("zoxide")
+	vim.keymap.set(
+		"n",
+		"<leader>fd",
+		require("telescope").extensions.zoxide.list,
+		{ desc = "Change directory (cwd)" }
+	)
+
+	-- Chezmoi
 	telescope.load_extension("chezmoi")
 	vim.keymap.set(
 		"n",
