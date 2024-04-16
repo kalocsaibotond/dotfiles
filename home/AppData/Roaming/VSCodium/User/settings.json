@@ -1,0 +1,13 @@
+{
+  "workbench.colorTheme": "Default High Contrast",
+  "editor.lineNumbers": "relative",
+  "notebook.lineNumbers": "on",
+  "editor.rulers": [
+    79
+  ],
+  "editor.fontFamily": "'OpenDyslexicM Nerd Font Mono', Consolas, 'Courier New', monospace",
+  "editor.fontSize": 13,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  }
+}
