@@ -16,7 +16,7 @@ return {
 			local fts = require("iron.fts")
 
 			table.insert(fts.python.ipython.command, "--no-confirm-exit")
-			table.insert(fts.python.ipython.command, "--pylab=qt")
+			table.insert(fts.python.ipython.command, "--pylab=tk")
 			if vim.fn.executable("pwsh") then
 				fts.ps1.ps1.command[1] = "pwsh"
 			end
