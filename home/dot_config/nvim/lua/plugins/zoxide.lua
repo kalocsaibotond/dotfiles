@@ -6,13 +6,31 @@ return {
 		"nvim-telescope/telescope.nvim",
 	},
 	config = function()
+		local telescope = require("telescope")
 		-- local z_utils = require("telescope._extensions.zoxide.utils")
-		require("telescope").setup({
-			extensions = {
-				zoxide = {
-					-- your configurations
-				},
-			},
-		})
+		-- telescope.setup({
+		-- 	extensions = {
+		-- 		zoxide = {
+		-- 			-- your configurations
+		-- 		},
+		-- 	},
+		-- })
+		telescope.load_extension("zoxide")
 	end,
+	keys = {
+		{
+			"<leader>fd",
+			function()
+				require("telescope").extensions.zoxide.list()
+			end,
+			desc = "Change directory (cwd)",
+		},
+		{
+			"<leader>d",
+			function()
+				require("telescope").extensions.zoxide.list()
+			end,
+			desc = "Change directory (cwd)",
+		},
+	},
 }

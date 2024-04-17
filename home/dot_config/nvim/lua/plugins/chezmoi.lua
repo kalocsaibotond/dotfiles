@@ -12,9 +12,20 @@ return {
 		"xvzc/chezmoi.nvim", -- For chezmoi-managed file editing, applying
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			require("chezmoi").setup({
-				-- your configurations
-			})
+			local telescope = require("telescope")
+			-- require("chezmoi").setup({
+			-- 	-- your configurations
+			-- })
+			telescope.load_extension("chezmoi")
 		end,
+		keys = {
+			{
+				"<leader>fz",
+				function()
+					require("telescope").extensions.chezmoi.find_files()
+				end,
+				desc = "Find Chezmoi Source File",
+			},
+		},
 	},
 }
