@@ -31,6 +31,12 @@ Add-ContextMenuDir `
     -DisplayName "Neovim Qt" `
     -ApplicationPath "$(scoop prefix neovim)\bin\nvim-qt.exe" `
     -ApplicationArgs '--maximized -- --cmd "cd %V"'
+Add-ContextMenu `
+   -DisplayName "Neovim Qt" `
+   -ApplicationPath "$(scoop prefix neovim)\bin\neovim-qt.exe" `
+   -ApplicationArgs '--maximized "%1"' `
+   -Classes '*'
+
 reg import "$(scoop prefix pwsh)\install-explorer-context.reg"
 reg import "$(scoop prefix pwsh)\install-explorer-context.reg"  # needs double run to work
 reg import "$(scoop prefix pwsh)\install-file-context.reg"

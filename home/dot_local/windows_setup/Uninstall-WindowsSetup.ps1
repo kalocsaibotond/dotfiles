@@ -5,6 +5,7 @@
 Remove-EnvironmentVariablesSetup -Scope "User"  # Remove environment variables
 Remove-ContextMenuDir -DisplayName "WezTerm"
 Remove-ContextMenuDir -DisplayName "Neovim Qt"
+Remove-ContextMenu -DisplayName "Neovim Qt" -Classes '*'
 reg import "$(scoop prefix pwsh)\uninstall-explorer-context.reg"
 reg import "$(scoop prefix pwsh)\uninstall-file-context.reg"
 

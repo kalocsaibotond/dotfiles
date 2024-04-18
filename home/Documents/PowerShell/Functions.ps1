@@ -66,7 +66,7 @@ function Get-RegistryClasses
             ValueFromPipelineByPropertyName = $true,
             HelpMessage = "Whether to add to context menu for all users.
             It requres administrator rigths
-            because modifications occur in HKCR."
+            because modifications occur in HKLM."
         )][switch]$Global
     )
     if ($Global){
@@ -161,7 +161,7 @@ function Add-ContextMenuDir
             ValueFromPipelineByPropertyName = $true,
             HelpMessage = "Whether to add to context menu for all users.
             It requres administrator rigths
-            because modifications occur in HKCR."
+            because modifications occur in HKLM."
         )][switch]$Global
     )
     BEGIN {
@@ -185,13 +185,13 @@ function Add-ContextMenuDir
                 -Name "Icon" `
                 -Value "$ApplicationPath"
 
-            $commandPath = Join-Path `
+            $CommandPath = Join-Path `
                 -Path $RegistryPath `
                 -ChildPath "command"
-            New-Item -Path $commandPath -Force | Out-Null
+            New-Item -Path $CommandPath -Force | Out-Null
             # Setting command to run
             Set-ItemProperty `
-                -Path $commandPath `
+                -Path $CommandPath `
                 -Name "(Default)" `
                 -Value "$ApplicationPath $ApplicationArgs"
         }
@@ -209,7 +209,7 @@ function Remove-ContextMenuDir
         The registry entry is identified with the DisplayName parameter.
     .PARAMETER DisplayName
         The display name of the application that
-        we want to put into the context menu.
+        we want to remove from the context menu.
     .PARAMETER Global
         Whether to remove from context menu for all users. This requires 
         administrator rights.
@@ -230,7 +230,7 @@ function Remove-ContextMenuDir
             ValueFromPipelineByPropertyName = $true,
             HelpMessage = "Whether to add to context menu for all users.
             It requres administrator rigths because modifications
-            occur in HKCR."
+            occur in HKLM."
         )][switch]$Global
 
     )
@@ -244,6 +244,172 @@ function Remove-ContextMenuDir
                     Join-Path -Path $RegistryClasses -ChildPath $shell
                 ) -ChildPath $n
                 Remove-Item -Path $RegistryPath -Force -Recurse
+            }
+        }
+    }
+}
+
+
+function Add-ContextMenu
+{
+    <#
+    .SYNOPSIS
+        Add file context menu item.
+    .DESCRIPTION
+        This command modifies the registry to add a context menu item.
+        For example when in the file exploler, one click at a file, the
+        the adde context menu will apper.
+    .PARAMETER DisplayName
+        The display name of the application that
+        we want to put into the context menu.
+    .PARAMETER ApplicationPath
+        The path of the executable application.
+    .PARAMETER ApplicationArgs
+        Command line arguments for the executable application.
+        These are jus put after the application path, after a whitespace.
+        The registry applies here its automatic string formatting.
+        For example the substring %1 will be substituted with the directory
+        and alike.
+    .PARAMETER Classes
+       Software classes / extensions in the registry hive
+       for which we want to use the application for opening.
+    .PARAMETER Global
+        Whether to add to context menu for all users. This requires 
+        administrator rights.
+    .EXAMPLE
+        PS> Add-ContextMenu `
+        >>     -DisplayName "Neovim Qt" `
+        >>     -ApplicationPath "$(scoop prefix neovim)\bin\neovim-qt.exe" `
+        >>     -ApplicationArgs '--maximized "%1"'
+        >>     -Classes '*'
+    #>
+    [cmdletbinding()]
+    param (
+        [Parameter(
+            Position = 0,
+            Mandatory = $true,
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = "Display name for the context menu option."
+        )][string]$DisplayName,
+        [Parameter(
+            Position = 1,
+            Mandatory = $true,
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = "Path to the application executable."
+        )][string]$ApplicationPath,
+        [Parameter(
+            Position = 2,
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = "CLI options to the application executable.
+            Note that any written %1 will be substiuted
+            to the current working directory."
+        )][string]$ApplicationArgs="",
+        [Parameter(
+            Position = 3,
+            VAlueFromPipeline = $true,
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = "Software classes in the registry hive."
+        )][string[]]$Classes='*',
+        [Parameter(
+            Position = 4,
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = "Whether to add to context menu for all users.
+            It requres administrator rigths
+            because modifications occur in HKLM."
+        )][switch]$Global
+    )
+    BEGIN {
+        $RegistryClasses = Get-RegistryClasses -Scope "2" -Global:$Global
+    }
+    PROCESS {
+        foreach($class in $Classes){
+            $RegistryPath = Join-Path -Path (
+                Join-Path -Path $RegistryClasses -ChildPath $class
+            ) -ChildPath (
+                Join-Path -Path "shell" -ChildPath $DisplayName
+            )
+
+            New-Item -Path $RegistryPath -Force | Out-Null
+            # Setting display text
+            Set-ItemProperty `
+                -Path ($RegistryPath -Replace '\*', '`*') `
+                -Name "(Default)" `
+                -Value "Open with $DisplayName"
+            # Setting display icon
+            Set-ItemProperty `
+                -Path ($RegistryPath -Replace '\*', '`*') `
+                -Name "Icon" `
+                -Value "$ApplicationPath"
+
+            $CommandPath = Join-Path `
+                -Path $RegistryPath `
+                -ChildPath "command"
+            New-Item -Path $CommandPath -Force | Out-Null
+            # Setting command to run
+            Set-ItemProperty `
+                -Path ($CommandPath -Replace '\*', '`*') `
+                -Name "(Default)" `
+                -Value "$ApplicationPath $ApplicationArgs"
+        }
+    }
+}
+
+
+function Remove-ContextMenu
+{
+    <#
+    .SYNOPSIS
+        Remove directory context menu item.
+    .DESCRIPTION
+        Reverse the effect of the Add-ContextMenu command.
+        The registry entry is identified with the DisplayName parameter.
+    .PARAMETER DisplayName
+        The display name of the application that
+        we want to eliminate from the context menu.
+    .PARAMETER Global
+        Whether to remove from context menu for all users. This requires 
+        administrator rights.
+    .EXAMPLE
+        PS> Remove-ContextMenu -DisplayName "Neovim Qt" -Classes '*'
+    #>
+    [cmdletbinding()]
+    param (
+        [Parameter(
+            Position = 0,
+            Mandatory = $true,
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = "Display name for the context menu option."
+        )][string[]]$DisplayName,
+        [Parameter(
+            Position = 1,
+            VAlueFromPipeline = $true,
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = "Software classes in the registry hive."
+        )][string[]]$Classes='*',
+        [Parameter(
+            Position = 2,
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = "Whether to add to context menu for all users.
+            It requres administrator rigths because modifications
+            occur in HKLM."
+        )][switch]$Global
+
+    )
+    BEGIN {
+        $RegistryClasses = Get-RegistryClasses -Scope "2" -Global:$Global
+    }
+    PROCESS { 
+        foreach($n in $DisplayName){
+            foreach($class in $Classes){
+                $RegistryPath = Join-Path -Path (
+                    Join-Path -Path $RegistryClasses -ChildPath $class
+                ) -ChildPath (
+                    Join-Path -Path "shell" -ChildPath $n
+                )
+                Remove-Item `
+                    -Path ($RegistryPath -Replace '\*', '`*') `
+                    -Force `
+                    -Recurse
             }
         }
     }
