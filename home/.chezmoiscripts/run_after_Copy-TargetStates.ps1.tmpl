@@ -1,0 +1,17 @@
+{{- if eq .chezmoi.os "windows" }}
+."home\Documents\PowerShell\Functions.ps1"
+
+if (Test-Command -Name "scoop"){
+    $ScoopList = $(scoop list)
+} else {
+    $ScoopList = ""
+}
+
+if ($ScoopList -Match "vscodium"){
+    Copy-Item `
+        -Path "$ENV:APPDATA\VSCodium\User\**"`
+        -Destination "$(scoop prefix vscodium)\data\user-data\User" `
+        -Force
+}
+
+{{- end}}
