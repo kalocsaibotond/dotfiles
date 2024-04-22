@@ -1,6 +1,12 @@
-$ProfileLocation = Split-Path -Path $Profile.CurrentUserCurrentHost -Parent
+# Loading Windows PowerShell profile
+$WindowsPowershellProfile = (
+    powershell -NoProfile -Command {
+        Write-OutPut -InputObject $($Profile.CurrentUserCurrentHost)
+    }
+)
+.$WindowsPowershellProfile
 
-."$ProfileLocation\Variables.ps1"
-."$ProfileLocation\Initialisations.ps1"
-."$ProfileLocation\Functions.ps1"
-."$ProfileLocation\Aliases.ps1"
+# Loading Cross Platform powershell specific profile
+$PwshProfileLocation = (
+    Split-Path -Path $Profile.CurrentUserCurrentHost -Parent
+)

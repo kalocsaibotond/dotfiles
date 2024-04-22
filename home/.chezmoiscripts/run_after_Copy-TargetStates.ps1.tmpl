@@ -1,5 +1,5 @@
 {{- if eq .chezmoi.os "windows" }}
-."{{- .chezmoi.sourceDir -}}\Documents\PowerShell\Functions.ps1"
+."{{- .chezmoi.sourceDir -}}\Documents\WindowsPowerShell\Functions.ps1"
 
 if (Test-Command -Name "scoop"){
     $ScoopList = $(scoop list)

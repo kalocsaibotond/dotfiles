@@ -1,5 +1,5 @@
-."..\..\Documents\PowerShell\Functions.ps1"
-."..\..\Documents\PowerShell\Variables.ps1"
+."..\..\Documents\WindowsPowerShell\Functions.ps1"
+."..\..\Documents\WindowsPowerShell\Variables.ps1"
 
 # Install Scoop packages
 # NOTE: Scoop is the primary package manager for my environment

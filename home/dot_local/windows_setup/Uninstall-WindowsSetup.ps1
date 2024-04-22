@@ -1,5 +1,5 @@
-."..\..\Documents\PowerShell\Functions.ps1"
-."..\..\Documents\PowerShell\Variables.ps1"
+."..\..\Documents\WindowsPowerShell\Functions.ps1"
+."..\..\Documents\WindowsPowerShell\Variables.ps1"
 
 # Cleaning up configuration
 Remove-EnvironmentVariablesSetup -Scope "User"  # Remove environment variables
