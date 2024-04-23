@@ -1,0 +1,22 @@
+{{- if eq .chezmoi.os "windows" }}
+."{{- .chezmoi.sourceDir -}}\Documents\WindowsPowerShell\Functions.ps1"
+
+if (Test-Command -Name "scoop"){
+    $ScoopList = $(scoop list) | Out-Null
+} else {
+    $ScoopList = ""
+}
+
+if ($ScoopList -Match "vscodium"){
+    Remove-Item `
+        -Path "$(scoop prefix vscodium)\data\user-data\User" `
+        -Recurse `
+        -Force
+    New-Item `
+        -ItemType Junction `
+        -Path "$(scoop prefix vscodium)\data\user-data\User" `
+        -Target "$ENV:APPDATA\VSCodium\User"`
+        -Force
+}
+
+{{- end}}
