@@ -10,8 +10,8 @@ local psep = package.config:sub(1, 1) -- Directory path separator on platform
 vim.opt.colorcolumn = "79"
 
 -- Setting horizontal and vertical cursor line
-vim.opt.cursorline = true
-vim.opt.cursorcolumn = true
+-- vim.o.cursorline = true
+vim.o.cursorcolumn = true
 
 -- Setting ergonomic nerdfont for gui usage, especially for neovim-qt
 vim.opt.guifont = "OpenDyslexicM Nerd Font Mono:h10"

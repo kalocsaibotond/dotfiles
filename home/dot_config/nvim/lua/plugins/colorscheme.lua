@@ -4,13 +4,31 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
+			local colors = require("cyberdream.colors")
 			require("cyberdream").setup({
-				-- Recommended - see "Configuring" below for more config options
 				transparent = true,
 				italic_comments = true,
 				hide_fillchars = true,
 				borderless_telescope = true,
 				terminal_colors = true,
+				theme = {
+					highlights = {
+						ColorColumn = { bg = colors.default.bgAlt },
+					},
+					colors = {
+						bg = "#000000",
+					},
+				},
+			})
+		end,
+	},
+	{
+		"nvim-lualine/lualine.nvim",
+		config = function()
+			require("lualine").setup({
+				options = {
+					theme = "cyberdream",
+				},
 			})
 		end,
 	},
