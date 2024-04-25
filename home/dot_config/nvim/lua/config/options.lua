@@ -11,7 +11,7 @@ vim.opt.colorcolumn = "79"
 
 -- Setting horizontal and vertical cursor line
 -- vim.o.cursorline = true
-vim.o.cursorcolumn = true
+-- vim.o.cursorcolumn = true
 
 -- Setting ergonomic nerdfont for gui usage, especially for neovim-qt
 vim.opt.guifont = "OpenDyslexicM Nerd Font Mono:h10"
