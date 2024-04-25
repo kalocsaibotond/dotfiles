@@ -11,12 +11,6 @@ set number relativenumber
 " Set ruler
 set colorcolumn=79
 
-" Highlight cursor line underneath the cursor horizontally.
-set cursorline
-
-" Highlight cursor line underneath the cursor vertically.
-set cursorcolumn
-
 " Set shift width to 4 spaces.Set tab width to 4 columns.
 set shiftwidth=4
 set tabstop=4 
