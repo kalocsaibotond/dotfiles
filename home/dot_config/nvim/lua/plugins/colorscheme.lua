@@ -1,8 +1,6 @@
 return {
 	{
 		"scottmckendry/cyberdream.nvim",
-		lazy = false,
-		priority = 1000,
 		config = function()
 			local colors = require("cyberdream.colors")
 			require("cyberdream").setup({
