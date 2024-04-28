@@ -21,16 +21,6 @@ return {
 		end,
 	},
 	{
-		"nvim-lualine/lualine.nvim",
-		config = function()
-			require("lualine").setup({
-				options = {
-					theme = "cyberdream",
-				},
-			})
-		end,
-	},
-	{
 		"LazyVim/LazyVim",
 		opts = {
 			colorscheme = "cyberdream",
