@@ -1,0 +1,5 @@
+return {
+	{
+		"brgmnn/vim-opencl",
+	},
+}
