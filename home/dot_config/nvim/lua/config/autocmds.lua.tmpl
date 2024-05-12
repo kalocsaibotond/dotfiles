@@ -12,4 +12,18 @@ else
 			vim.schedule(require("chezmoi.commands.__edit").watch)
 		end,
 	})
+
+	-- OpenCL file setings
+	vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+		pattern = "*.cl",
+		callback = function()
+			vim.opt_local.filetype = "opencl"
+			vim.opt_local.shiftwidth = 8
+			vim.opt_local.tabstop = 8
+			vim.opt_local.commentstring = "/*%s*/"
+			vim.opt_local.comments =
+				"sO:* -,mO:*  ,exO:*/,s1:/*,mb:*,ex:*/,:///,://"
+		end,
+		desc = "Set indentation for OpenCL files",
+	})
 end
