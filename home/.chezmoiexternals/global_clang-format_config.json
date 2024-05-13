@@ -1,0 +1,7 @@
+{
+  ".clang-format": {
+    "type": "file",
+    "url": "https://raw.githubusercontent.com/torvalds/linux/master/.clang-format",
+    "refreshPeriod": "168h"
+  }
+}
