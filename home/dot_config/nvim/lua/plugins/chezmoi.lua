@@ -10,6 +10,7 @@ return {
 	},
 	{
 		"xvzc/chezmoi.nvim", -- For chezmoi-managed file editing, applying
+		event = "LazyFile",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			local telescope = require("telescope")

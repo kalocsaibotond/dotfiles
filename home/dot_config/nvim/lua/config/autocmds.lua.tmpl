@@ -11,10 +11,11 @@ else
 		callback = function()
 			vim.schedule(require("chezmoi.commands.__edit").watch)
 		end,
+		desc = "Edit chezmoi managed files in the working tree.",
 	})
 
 	-- OpenCL file setings
-	vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 		pattern = "*.cl",
 		callback = function()
 			vim.opt_local.filetype = "opencl"
@@ -28,6 +29,6 @@ else
 			vim.opt_local.comments =
 				"sO:* -,mO:*  ,exO:*/,s1:/*,mb:*,ex:*/,:///,://"
 		end,
-		desc = "Set indentation for OpenCL files",
+		desc = "Set OpenCL filetype related options.",
 	})
 end

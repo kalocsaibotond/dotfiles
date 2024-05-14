@@ -5,7 +5,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope.nvim",
 	},
-	config = function()
+	config = function(_, _)
 		local telescope = require("telescope")
 		-- local z_utils = require("telescope._extensions.zoxide.utils")
 		-- telescope.setup({

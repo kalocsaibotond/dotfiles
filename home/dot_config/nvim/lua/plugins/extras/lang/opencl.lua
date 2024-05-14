@@ -4,7 +4,7 @@ if not vim.g.vscode then
 	return {
 		{
 			"brgmnn/vim-opencl", -- For syntax highlighting
-			lazy = false,
+			event = "BufEnter *.cl",
 		}, -- NOTE: Contains OpenCL file detection autocommand
 		{
 			"neovim/nvim-lspconfig",

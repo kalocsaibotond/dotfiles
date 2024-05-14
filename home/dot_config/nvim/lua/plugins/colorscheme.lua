@@ -1,7 +1,7 @@
 return {
 	{
 		"scottmckendry/cyberdream.nvim",
-		config = function()
+		config = function(_, _)
 			local colors = require("cyberdream.colors")
 			require("cyberdream").setup({
 				transparent = true,
