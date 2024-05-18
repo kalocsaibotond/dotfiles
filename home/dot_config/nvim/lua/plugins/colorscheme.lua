@@ -2,7 +2,6 @@ return {
 	{
 		"scottmckendry/cyberdream.nvim",
 		config = function(_, _)
-			local colors = require("cyberdream.colors")
 			require("cyberdream").setup({
 				transparent = true,
 				italic_comments = true,
@@ -10,9 +9,6 @@ return {
 				borderless_telescope = true,
 				terminal_colors = true,
 				theme = {
-					highlights = {
-						ColorColumn = { bg = colors.default.bgAlt },
-					},
 					colors = {
 						bg = "#000000",
 					},

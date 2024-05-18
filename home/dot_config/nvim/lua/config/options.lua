@@ -7,7 +7,7 @@ local os = require("os")
 local psep = package.config:sub(1, 1) -- Directory path separator on platform
 
 -- Setting ruler
-vim.opt.colorcolumn = "79"
+vim.opt.colorcolumn = "80"
 
 -- Setting horizontal and vertical cursor line
 vim.o.cursorline = false
