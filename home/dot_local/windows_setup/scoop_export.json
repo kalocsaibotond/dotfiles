@@ -255,6 +255,11 @@
       "Name": "qemu"
     },
     {
+      "Info": "Minimalist GUI for Neovim, lighter than terminal emulators",
+      "Source": "extras",
+      "Name": "neovim-qt"
+    },
+    {
       "Info": "Window manager that is suckless as much as possible on windows",
       "Source": "extras",
       "Name": "workspacer"

@@ -29,11 +29,11 @@ Add-ContextMenuDir `
     -ApplicationArgs 'start --no-auto-connect --cwd "%V"'
 Add-ContextMenuDir `
     -DisplayName "Neovim Qt" `
-    -ApplicationPath "$(scoop prefix neovim)\bin\nvim-qt.exe" `
+    -ApplicationPath "$(scoop prefix neovim-qt)\bin\nvim-qt.exe" `
     -ApplicationArgs '--maximized -- --cmd "cd %V"'
 Add-ContextMenu `
    -DisplayName "Neovim Qt" `
-   -ApplicationPath "$(scoop prefix neovim)\bin\neovim-qt.exe" `
+   -ApplicationPath "$(scoop prefix neovim-qt)\bin\nvim-qt.exe" `
    -ApplicationArgs '--maximized "%1"' `
    -Classes '*'
 
