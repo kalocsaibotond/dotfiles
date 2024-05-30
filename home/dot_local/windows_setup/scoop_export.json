@@ -22,37 +22,12 @@
     {
       "Info": "",
       "Source": "main",
-      "Name": "uutils-coreutils"
-    },
-    {
-      "Info": "",
-      "Source": "main",
-      "Name": "diffutils"
-    },
-    {
-      "Info": "",
-      "Source": "main",
-      "Name": "patch"
-    },
-    {
-      "Info": "",
-      "Source": "main",
-      "Name": "sed"
-    },
-    {
-      "Info": "",
-      "Source": "main",
       "Name": "wget"
     },
     {
       "Info": "",
       "Source": "extras",
       "Name": "mc"
-    },
-    {
-      "Info": "",
-      "Source": "main",
-      "Name": "gawk"
     },
     {
       "Info": "Better powershell",
@@ -115,9 +90,9 @@
       "Name": "eza"
     },
     {
-      "Info": "File manager like ranger",
+      "Info": "File manager like ranger, lf",
       "Source": "main",
-      "Name": "lf"
+      "Name": "yazi"
     },
     {
       "Info": "Better GNU du",
@@ -195,7 +170,7 @@
       "Name": "xh"
     },
     {
-      "Info": "Git version control system",
+      "Info": "Git version control system and basic linux CLI utilities.",
       "Source": "main",
       "Name": "git"
     },
@@ -218,11 +193,6 @@
       "Info": "SVN version control system",
       "Source": "extras",
       "Name": "tortoisesvn"
-    },
-    {
-      "Info": "Encryption CLI tool",
-      "Source": "main",
-      "Name": "gpg"
     },
     {
       "Info": "CLI password manager",

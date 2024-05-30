@@ -2,6 +2,18 @@
 ."..\..\Documents\WindowsPowerShell\Variables.ps1"
 
 # Cleaning up configuration
+$GitInstallDir = "$(scoop prefix git)"
+foreach(
+    $Executable in (Get-ChildItem -Path "$GitInstallDir\usr\bin\*.exe")
+) {
+  scoop shim rm $Executable.BaseName
+}
+foreach(
+    $Executable in (Get-ChildItem -Path "$GitInstallDir\mingw64\bin\*.exe")
+) {
+  scoop shim rm $Executable.BaseName
+}
+
 Remove-EnvironmentVariablesSetup -Scope "User"  # Remove environment variables
 Remove-ContextMenuDir -DisplayName "WezTerm"
 Remove-ContextMenuDir -DisplayName "Neovim Qt"

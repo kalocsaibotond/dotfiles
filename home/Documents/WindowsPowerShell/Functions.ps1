@@ -237,7 +237,7 @@ function Remove-ContextMenuDir
     BEGIN {
         $RegistryClasses = Get-RegistryClasses -Scope "2" -Global:$Global
     }
-    PROCESS { 
+    PROCESS {
         foreach($n in $DisplayName){
             foreach($shell in $ContextMenuDirRegeditEntries){
                 $RegistryPath = Join-Path -Path (

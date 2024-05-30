@@ -22,6 +22,19 @@ winget import `
 
 # Set up configuration
 
+$GitInstallDir = "$(scoop prefix git)"
+foreach(
+    $Executable in (Get-ChildItem -Path "$GitInstallDir\usr\bin\*.exe")
+) {
+  scoop shim add $Executable.BaseName $Executable.FullName
+}
+foreach(
+    $Executable in (Get-ChildItem -Path "$GitInstallDir\mingw64\bin\*.exe")
+) {
+  scoop shim add  $Executable.BaseName $Executable.FullName
+}
+
+
 Set-EnvironmentVariablesSetup -Scope "User"  # Installign environment variables
 Add-ContextMenuDir `
     -DisplayName "WezTerm" `
