@@ -25,12 +25,5 @@ return {
 			end,
 			desc = "Change directory (cwd)",
 		},
-		{
-			"<leader>d",
-			function()
-				require("telescope").extensions.zoxide.list()
-			end,
-			desc = "Change directory (cwd)",
-		},
 	},
 }
