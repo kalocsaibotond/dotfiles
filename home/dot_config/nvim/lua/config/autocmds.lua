@@ -5,15 +5,6 @@
 if vim.g.vscode then
 -- vscode-nvim settings
 else
-	-- Chezmoi
-	vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-		pattern = { "{{.chezmoi.workingTree}}/**" },
-		callback = function()
-			vim.schedule(require("chezmoi.commands.__edit").watch)
-		end,
-		desc = "Edit chezmoi managed files in the working tree.",
-	})
-
 	-- OpenCL file settings
 	vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 		pattern = "*.cl",

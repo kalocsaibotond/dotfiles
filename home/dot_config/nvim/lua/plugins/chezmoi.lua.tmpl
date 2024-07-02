@@ -1,0 +1,58 @@
+return {
+	{
+		"alker0/chezmoi.vim", -- For syntax highlighting
+		lazy = false,
+		init = function()
+			-- This option is required.
+			vim.g["chezmoi#use_tmp_buffer"] = true
+			-- add other options here if needed.
+			vim.g["chezmoi#source_dir_path"] = "{{.chezmoi.sourceDir}}"
+		end,
+	},
+	{
+		"xvzc/chezmoi.nvim", -- For chezmoi-managed file editing, applying
+		event = "LazyFile",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			local telescope = require("telescope")
+			-- require("chezmoi").setup({
+			-- 	-- your configurations
+			-- })
+			telescope.load_extension("chezmoi")
+		end,
+		init = function()
+			vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+				pattern = { "{{.chezmoi.workingTree}}/**" },
+				callback = function()
+					vim.schedule(require("chezmoi.commands.__edit").watch)
+				end,
+				desc = "Edit chezmoi managed files in the working tree.",
+			})
+		end,
+		keys = {
+			{
+				"<leader>fz",
+				function()
+					require("telescope").extensions.chezmoi.find_files()
+				end,
+				desc = "Find Chezmoi Source File",
+			},
+		},
+	},
+	{
+		"nvimdev/dashboard-nvim",
+		opts = function(_, opts)
+			table.insert(
+				opts.config.center,
+				6,
+				{ -- Inserting chezmoi dashboard entry
+					action = require("telescope").extensions.chezmoi.find_files,
+					desc = " Chezmoi",
+					icon = opts.config.center[5].icon,
+					key = "z",
+					key_format = opts.config.center[5].key_format,
+				}
+			)
+		end,
+	},
+}
