@@ -32,11 +32,8 @@ if not vim.g.vscode then
 		table.insert(fts, k)
 	end
 
-	require("which-key").register({
-		r = { name = "repl" },
-	}, {
-		prefix = "<LocalLeader>",
-		mode = "n",
+	require("which-key").add({
+		{ "<LocalLeader>r", group = "repl" }, -- Add repl group in which-key
 	})
 	return {
 		"milanglacier/yarepl.nvim",
