@@ -1,12 +1,12 @@
 {
   "buckets": [
     {
-      "Name": "extras",
-      "Source": "https://github.com/ScoopInstaller/Extras"
-    },
-    {
       "Name": "main",
       "Source": "https://github.com/ScoopInstaller/Main"
+    },
+    {
+      "Name": "extras",
+      "Source": "https://github.com/ScoopInstaller/Extras"
     },
     {
       "Name": "nerd-fonts",
