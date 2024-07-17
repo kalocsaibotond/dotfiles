@@ -10,7 +10,10 @@ if (-Not (Test-Command -Name scoop)){
 if (-Not (Test-Command -Name git)){  # Needed for non-main buckets
     scoop install main/git
 }
-scoop update
+
+if (-Not (Test-Command -Name chezmoi)){  # Chezmoi is part of the config
+    scoop install main/chezmoi
+}
 
 scoop import .\scoop_export.json
 
