@@ -7,6 +7,10 @@
 if (-Not (Test-Command -Name scoop)){
     Invoke-RestMethod get.scoop.sh | Invoke-Expression
 }
+if (-Not (Test-Command -Name git)){  # Needed for non-main buckets
+    scoop install main/git
+}
+scoop update
 
 scoop import .\scoop_export.json
 

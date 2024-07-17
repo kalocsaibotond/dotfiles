@@ -175,11 +175,6 @@
       "Name": "netcat"
     },
     {
-      "Info": "Git version control system and basic linux CLI utilities.",
-      "Source": "main",
-      "Name": "git"
-    },
-    {
       "Info": "Git diff pager",
       "Source": "main",
       "Name": "delta"
