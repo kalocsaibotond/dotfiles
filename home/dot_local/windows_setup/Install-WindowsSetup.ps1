@@ -8,7 +8,7 @@ if (-Not (Test-Command -Name scoop)){
     Invoke-RestMethod get.scoop.sh | Invoke-Expression
 }
 
-scoop install .\scoop_export.json
+scoop import .\scoop_export.json
 
 if (-Not (Test-Command -Name winget)){
     scoop install main/winget
