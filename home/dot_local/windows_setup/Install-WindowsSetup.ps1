@@ -4,7 +4,9 @@
 # Install Scoop packages
 # NOTE: Scoop is the primary package manager for my environment
 
-Invoke-RestMethod get.scoop.sh | Invoke-Expression
+if (-Not (Test-Command -Name scoop)){
+    Invoke-RestMethod get.scoop.sh | Invoke-Expression
+}
 
 scoop install .\scoop_export.json
 
@@ -35,7 +37,7 @@ foreach(
 }
 
 
-Set-EnvironmentVariablesSetup -Scope "User"  # Installign environment variables
+Set-EnvironmentVariablesSetup -Scope "User"  # Installing environment variables
 Add-ContextMenuDir `
     -DisplayName "WezTerm" `
     -ApplicationPath "$(scoop prefix wezterm)\wezterm-gui.exe" `
