@@ -1,8 +1,12 @@
-$WindowsPowershellProfileLocation = (
-    Split-Path -Path $Profile.CurrentUserCurrentHost -Parent
-)
+if ("Core" -eq $PSEdition){
+    $ProfileLocation = $WindowsPowershellProfileLocation
+} else {
+    $ProfileLocation = (
+        Split-Path -Path $Profile.CurrentUserCurrentHost -Parent
+    )
+}
 
-."$WindowsPowershellProfileLocation\Variables.ps1"
-."$WindowsPowershellProfileLocation\Initialisations.ps1"
-."$WindowsPowershellProfileLocation\Functions.ps1"
-."$WindowsPowershellProfileLocation\Aliases.ps1"
+."$ProfileLocation\Variables.ps1"
+."$ProfileLocation\Initialisations.ps1"
+."$ProfileLocation\Functions.ps1"
+."$ProfileLocation\Aliases.ps1"

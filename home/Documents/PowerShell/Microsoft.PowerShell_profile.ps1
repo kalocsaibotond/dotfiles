@@ -4,9 +4,12 @@ $WindowsPowershellProfile = (
         Write-OutPut -InputObject $($Profile.CurrentUserCurrentHost)
     }
 )
+$WindowsPowershellProfileLocation = (
+    Split-Path -Path $WindowsPowershellProfile -Parent
+)
 .$WindowsPowershellProfile
 
-# Loading Cross Platform powershell specific profile
-$PwshProfileLocation = (
+# Loading cross platform PowerShell specific profile
+$ProfileLocation = (
     Split-Path -Path $Profile.CurrentUserCurrentHost -Parent
 )
