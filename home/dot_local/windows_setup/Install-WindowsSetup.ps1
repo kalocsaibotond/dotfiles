@@ -42,7 +42,7 @@ foreach(
 ) {
   scoop shim add  $Executable.BaseName $Executable.FullName
 }
-
+scoop shim add workspacer "$(scoop prefix workspacer)\workspacer.exe"
 
 Set-EnvironmentVariablesSetup -Scope "User"  # Installing environment variables
 Add-ContextMenuDir `

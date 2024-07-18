@@ -13,6 +13,7 @@ foreach(
 ) {
   scoop shim rm $Executable.BaseName
 }
+scoop shim rm workspacer
 
 Remove-EnvironmentVariablesSetup -Scope "User"  # Remove environment variables
 Remove-ContextMenuDir -DisplayName "WezTerm"
