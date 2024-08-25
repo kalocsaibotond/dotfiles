@@ -205,6 +205,11 @@
       "Name": "imagemagick"
     },
     {
+      "Info": "String to QR code converter cli tool.",
+      "Source": "main",
+      "Name": "qrencode"
+    },
+    {
       "Info": "Audio, video editing and converting CLI tool",
       "Source": "main",
       "Name": "ffmpeg"
