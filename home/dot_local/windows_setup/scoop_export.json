@@ -130,9 +130,34 @@
       "Name": "sd"
     },
     {
+      "Info": "Human readable smart diff",
+      "Source": "main",
+      "Name": "difftastic"
+    },
+    {
+      "Info": "Command-line hex viewer",
+      "Source": "main",
+      "Name": "hexyl"
+    },
+    {
+      "Info": "Awk for structured data formats",
+      "Source": "main",
+      "Name": "miller"
+    },
+    {
       "Info": "JSON, YAML, TOML, XML and CSV query processor",
       "Source": "extras",
       "Name": "dasel"
+    },
+    {
+      "Info": "Binary data queryier like jq",
+      "Source": "main",
+      "Name": "fq"
+    },
+    {
+      "Info": "Terminal JSON viewer",
+      "Source": "main",
+      "Name": "fx"
     },
     {
       "Info": "Interactive TUI jq",
