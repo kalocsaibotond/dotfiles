@@ -17,4 +17,11 @@ Set-Alias `
     -Value Start-EzaWithIcons `
     -Description "Eza bit with icons on."
 
-
+function Restart-Workspacer {
+    Stop-Process -Name workspacer*
+    Start-Process workspacer
+}
+Set-Alias `
+    -Name rws `
+    -Value Restart-Workspacer `
+    -Description "Start or rather restart workspacer tiling window manager."
