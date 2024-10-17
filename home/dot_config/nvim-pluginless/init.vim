@@ -107,4 +107,13 @@ set omnifunc=syntaxcomplete#Complete
 set complete+=k
 set completeopt=menu,menuone,noinsert
 
-
+" Setting shell preference
+if has('win32')
+  if executable('powershell') " Getting rid of cmd if possible
+    let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
+    let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command '
+    let &shellredir = '| Out-File -Encoding UTF8 %s'
+    let &shellpipe  = '| Out-File -Encoding UTF8 %s'
+    set shellquote= shellxquote=
+  endif
+endif
