@@ -16,10 +16,12 @@ vim.o.cursorcolumn = false
 -- Setting ergonomic nerdfont for gui usage, especially for neovim-qt
 vim.opt.guifont = "OpenDyslexicM Nerd Font Mono:h10"
 
--- Setting default shell preferences
-if vim.fn.executable("cmd") then
-	if vim.fn.executable("powershell") then
-		if vim.fn.executable("pwsh") then
+-- Setting default shell preferences per system
+local uname = vim.uv.os_uname().sysname
+
+if "Windows_NT" == uname then -- Getting rid of cmd if possible
+	if 1 == vim.fn.executable("powershell") then
+		if 1 == vim.fn.executable("pwsh") then
 			vim.o.shell = "pwsh"
 		else
 			vim.o.shell = "powershell"
@@ -37,22 +39,10 @@ if vim.fn.executable("cmd") then
 		vim.o.shellquote = ""
 		vim.o.shellxquote = ""
 	end
-else
-	if vim.fn.executable("dash") then
-		vim.o.shell = "dash"
-	elseif vim.fn.executable("bash") then
-		vim.o.shell = "bash"
-	end
 end
 
 -- Setting up python3 provider
 local conda_prefix = os.getenv("CONDA_PREFIX")
-if nil == conda_prefix then
-	vim.g.python3_host_prog = vim.env.HOME
-		.. psep
-		.. "Anaconda3"
-		.. psep
-		.. "python"
-else
+if conda_prefix then
 	vim.g.python3_host_prog = conda_prefix .. psep .. "python"
 end
