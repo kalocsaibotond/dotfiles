@@ -7,11 +7,11 @@ local os = require("os")
 local psep = package.config:sub(1, 1) -- Directory path separator on platform
 
 -- Setting ruler
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = { 80 }
 
 -- Setting horizontal and vertical cursor line
-vim.o.cursorline = false
-vim.o.cursorcolumn = false
+vim.opt.cursorline = false
+vim.opt.cursorcolumn = false
 
 -- Setting ergonomic nerdfont for gui usage, especially for neovim-qt
 vim.opt.guifont = "OpenDyslexicM Nerd Font Mono:h10"
@@ -22,22 +22,22 @@ local uname = vim.uv.os_uname().sysname
 if "Windows_NT" == uname then -- Getting rid of cmd if possible
 	if 1 == vim.fn.executable("powershell") then
 		if 1 == vim.fn.executable("pwsh") then
-			vim.o.shell = "pwsh"
+			vim.opt.shell = "pwsh"
 		else
-			vim.o.shell = "powershell"
+			vim.opt.shell = "powershell"
 		end
 
-		vim.o.shellcmdflag = "-NoLogo -ExecutionPolicy Bypass -Command "
+		vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy Bypass -Command "
 		--   .. "[Console]::InputEncoding=[Console]"
 		--   .. "::OutputEncoding=[System.Text.UTF8Encoding]::new();"
 		--   .. "$PSDefaultParameterValues['Out-File:Encoding']='utf8';"
 		--   .. "Remove-Alias -Force -ErrorAction SilentlyContinue tee;"
-		-- vim.o.shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
-		-- vim.o.shellpipe = '2>&1 | %%{ "$_" } | Tee-Object %s; exit $LastExitCode'
-		vim.o.shellredir = "| Out-File -Encoding UTF8 %s"
-		vim.o.shellpipe = "| Out-File -Encoding UTF8 %s"
-		vim.o.shellquote = ""
-		vim.o.shellxquote = ""
+		-- vim.opt.shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
+		-- vim.opt.shellpipe = '2>&1 | %%{ "$_" } | Tee-Object %s; exit $LastExitCode'
+		vim.opt.shellredir = "| Out-File -Encoding UTF8 %s"
+		vim.opt.shellpipe = "| Out-File -Encoding UTF8 %s"
+		vim.opt.shellquote = ""
+		vim.opt.shellxquote = ""
 	end
 end
 
@@ -46,3 +46,6 @@ local conda_prefix = os.getenv("CONDA_PREFIX")
 if conda_prefix then
 	vim.g.python3_host_prog = conda_prefix .. psep .. "python"
 end
+
+-- C specific options
+vim.g.c_syntax_for_h = 1
