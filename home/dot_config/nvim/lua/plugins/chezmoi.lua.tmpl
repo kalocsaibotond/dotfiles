@@ -1,7 +1,33 @@
+local pick_chezmoi
+if "telescope" == LazyVim.pick.picker.name then
+	pick_chezmoi = function()
+		require("telescope").extensions.chezmoi.find_files()
+	end
+elseif "fzf" == LazyVim.pick.picker.name then
+	local fzf_lua = require("fzf-lua")
+	local results = require("chezmoi.commands").list()
+	local chezmoi = require("chezmoi.commands")
+
+	local opts = {
+		fzf_opts = {},
+		fzf_colors = true,
+		actions = {
+			["default"] = function(selected)
+				chezmoi.edit({
+					targets = { "~/" .. selected[1] },
+					args = { "--watch" },
+				})
+			end,
+		},
+	}
+	pick_chezmoi = function()
+		fzf_lua.fzf_exec(results, opts)
+	end
+end
+
 return {
 	{
 		"alker0/chezmoi.vim", -- For syntax highlighting
-		lazy = false,
 		init = function()
 			-- This option is required.
 			vim.g["chezmoi#use_tmp_buffer"] = true
@@ -32,21 +58,36 @@ return {
 		keys = {
 			{
 				"<leader>fz",
-				function()
-					require("telescope").extensions.chezmoi.find_files()
-				end,
+				pick_chezmoi,
 				desc = "Find Chezmoi Source File",
 			},
 		},
 	},
 	{
+		"folke/snacks.nvim",
+		optional = true,
+		opts = function(_, opts)
+			table.insert(
+				opts.dashboard.preset.keys,
+				6,
+				{ -- Inserting chezmoi dashboard entry
+					icon = opts.dashboard.preset.keys[5].icon,
+					key = "z",
+					desc = "Chezmoi",
+					action = pick_chezmoi,
+				}
+			)
+		end,
+	},
+	{
 		"nvimdev/dashboard-nvim",
+		optional = true,
 		opts = function(_, opts)
 			table.insert(
 				opts.config.center,
 				6,
 				{ -- Inserting chezmoi dashboard entry
-					action = require("telescope").extensions.chezmoi.find_files,
+					action = pick_chezmoi,
 					desc = " Chezmoi",
 					icon = opts.config.center[5].icon,
 					key = "z",
