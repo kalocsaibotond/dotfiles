@@ -1,5 +1,6 @@
 return {
 	"ThePrimeagen/harpoon",
+	optional = true,
 	keys = function(_, keys)
 		for i = 6, 9 do
 			table.insert(keys, {
