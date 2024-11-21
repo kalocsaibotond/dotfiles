@@ -13,7 +13,7 @@ if not vim.g.vscode then
 
 	-- Filetype to repl assocaitions
 	local ft_to_repl = {
-		python = "ipython",
+		python = "python",
 		sh = "sh",
 		bat = "cmd",
 		ps1 = "powershell",
@@ -24,8 +24,9 @@ if not vim.g.vscode then
 	end
 	if vim.fn.executable("dash") then
 		ft_to_repl["sh"] = "dash"
-	elseif vim.fn.executable("bash") then
-		ft_to_repl["sh"] = "bash"
+	end
+	if vim.fn.executable("pwsh") then
+		ft_to_repl["ps1"] = "pwsh"
 	end
 	local fts = {}
 	for k, _ in pairs(ft_to_repl) do
