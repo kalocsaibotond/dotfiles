@@ -1,0 +1,6 @@
+--recurse=yes
+
+# For OpenCL, we need to use the .cl extension
+--map-C=+.cl
+
+--extras=q
