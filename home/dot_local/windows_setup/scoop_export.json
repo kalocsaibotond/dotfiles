@@ -15,17 +15,17 @@
   ],
   "apps": [
     {
-      "Info": "",
+      "Info": "GNU GCC, GDB, make, binutils and other tools",
       "Source": "main",
-      "Name": "mingw-winlibs"
+      "Name": "mingw"
     },
     {
-      "Info": "",
+      "Info": "GNU download tool",
       "Source": "main",
       "Name": "wget"
     },
     {
-      "Info": "",
+      "Info": "GNU total commander",
       "Source": "extras",
       "Name": "mc"
     },
