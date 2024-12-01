@@ -1,0 +1,17 @@
+#!/bin/sh
+# .shrc
+
+# Only apply in interactive shell sessions
+case $- in
+*i*) ;; # Interactive shell session
+*) return ;;
+esac
+
+[ -f /etc/shrc ] && . /etc/shrc
+
+if [ -d $HOME/.shrc.d ]; then
+  for f in $HOME/.shrc.d/*.sh; do
+    [ -r $f ] && . $f
+  done
+  unset f
+fi

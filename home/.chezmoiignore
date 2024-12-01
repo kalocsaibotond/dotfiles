@@ -1,4 +1,9 @@
-{{- if ne .chezmoi.os "windows" }}
+{{- if eq .chezmoi.os "windows" }}
+.profile
+.profile.d
+.shrc
+.shrc.d
+{{ else }}
 AppData
 Documents
 windows_setup
