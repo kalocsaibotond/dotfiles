@@ -1,6 +1,6 @@
 function Start-PluginlessNeovim {
-    nvim.exe @args `
-        -u $ENV:XDG_CONFIG_HOME\nvim-pluginless\init.vim `
+    nvim.exe -u $ENV:XDG_CONFIG_HOME\nvim-pluginless\init.vim `
+        @args `
         @PSBoundParameters
 }
 Set-Alias `
@@ -10,12 +10,37 @@ Set-Alias `
 
 
 function Start-EzaWithIcons {
-   eza.exe @args @PSBoundParameters --icons=auto
+   eza.exe --icons=auto @args @PSBoundParameters 
 }
 Set-Alias `
     -Name eza `
     -Value Start-EzaWithIcons `
-    -Description "Eza bit with icons on."
+    -Description "Eza with icons on."
+
+function Start-EzaWithPager {
+   eza.exe --colour=always --icons=always --classify=always `
+       @args @PSBoundParameters | moar
+}
+Set-Alias `
+    -Name ezap `
+    -Value Start-EzaWithPager `
+    -Description "Eza with pager."
+
+function Start-FdWithPager {
+    fd.exe --color always @args @PSBoundParameters | moar
+}
+Set-Alias `
+    -Name fdp `
+    -Value Start-FdWithPager `
+    -Description "Fd with pager."
+
+function Start-RgWithPager {
+    rg.exe --pretty @args @PSBoundParameters | moar -no-linenumbers
+}
+Set-Alias `
+    -Name rgp `
+    -Value Start-RgWithPager `
+    -Description "Rg with pager."
 
 function Restart-Workspacer {
     Stop-Process -Name workspacer*

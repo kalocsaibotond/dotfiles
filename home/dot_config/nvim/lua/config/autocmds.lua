@@ -29,4 +29,17 @@ else
 		end,
 		desc = "Set C language family filetype related options.",
 	})
+
+	-- Powershell file type settings
+	vim.api.nvim_create_autocmd({ "FIleType" }, {
+		callback = function()
+			if "ps1" == vim.opt_local.filetype:get() then
+				vim.opt_local.tabstop = 4
+				vim.opt_local.expandtab = true
+				vim.opt_local.softtabstop = 4
+				vim.opt_local.shiftwidth = 4
+			end
+		end,
+		desc = "Set C language family filetype related options.",
+	})
 end
