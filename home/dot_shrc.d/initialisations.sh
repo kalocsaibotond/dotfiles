@@ -4,13 +4,12 @@ set -o vi
 # Set shell prompt
 case $SHELL_NAME in
 'bash')
-  NEW_PS1='[\\u@\\h \\W\\$]'
-  PS1=$(echo $PS1 | sed "s/[^$]\+\\$/$NEW_PS1/")
+  PS1=$(echo $PS1 | sed "s/[^$]\\+\\$/\\[\\\\u@\\\\h \\\\W\\$\\] /")
   ;;
 esac
 
 # Zoxide initialisation
-if ! command -v z && command -v zoxide; then
+if ! command -v z >/dev/null && command -v zoxide >/dev/null; then
   case $SHELL_NAME in
   "zsh") eval "$(zoxide init zsh --hook prompt)" ;;
   "bash") eval "$(zoxide init bash --hook prompt)" ;;
