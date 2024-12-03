@@ -42,6 +42,14 @@ Set-Alias `
     -Value Start-RgWithPager `
     -Description "Rg with pager."
 
+function Start-DifftWithPager {
+    difft.exe --color always @args @PSBoundParameters | moar -no-linenumbers
+}
+Set-Alias `
+    -Name difftp `
+    -Value Start-DifftWithPager `
+    -Description "difft with pager."
+
 function Restart-Workspacer {
     Stop-Process -Name workspacer*
     Start-Process workspacer

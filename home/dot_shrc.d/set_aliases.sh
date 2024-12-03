@@ -10,3 +10,6 @@ fdp() {
 rgp() {
   rg --pretty "$@" | $PAGER
 }
+difftp() {
+  difft --color always "$@" | $PAGER
+}
