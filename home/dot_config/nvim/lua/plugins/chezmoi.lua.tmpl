@@ -4,24 +4,22 @@ if "telescope" == LazyVim.pick.picker.name then
 		require("telescope").extensions.chezmoi.find_files()
 	end
 elseif "fzf" == LazyVim.pick.picker.name then
-	local fzf_lua = require("fzf-lua")
-	local results = require("chezmoi.commands").list()
-	local chezmoi = require("chezmoi.commands")
-
-	local opts = {
-		fzf_opts = {},
-		fzf_colors = true,
-		actions = {
-			["default"] = function(selected)
-				chezmoi.edit({
-					targets = { "~/" .. selected[1] },
-					args = { "--watch" },
-				})
-			end,
-		},
-	}
 	pick_chezmoi = function()
-		fzf_lua.fzf_exec(results, opts)
+		local chezmoi = require("chezmoi.commands")
+
+		local opts = {
+			fzf_opts = {},
+			fzf_colors = true,
+			actions = {
+				["default"] = function(selected, _)
+					chezmoi.edit({
+						targets = { "~/" .. selected[1] },
+						args = { "--watch" },
+					})
+				end,
+			},
+		}
+		require("fzf-lua").fzf_exec(chezmoi.list(), opts)
 	end
 end
 

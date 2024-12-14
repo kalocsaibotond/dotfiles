@@ -6,6 +6,9 @@ local os = require("os")
 
 local psep = package.config:sub(1, 1) -- Directory path separator on platform
 
+-- Disabling animations
+vim.g.snacks_animate = false
+
 -- Setting ruler
 vim.opt.colorcolumn = { 80 }
 
