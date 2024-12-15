@@ -8,6 +8,8 @@ elseif "fzf" == LazyVim.pick.picker.name then
 		local chezmoi = require("chezmoi.commands")
 
 		local opts = {
+			cwd = "~",
+			previewer = "builtin",
 			fzf_opts = {},
 			fzf_colors = true,
 			actions = {
