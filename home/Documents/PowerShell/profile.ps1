@@ -7,4 +7,4 @@ $WindowsPowershellProfile = (
 $WindowsPowershellProfileLocation = (
     Split-Path -Path $WindowsPowershellProfile -Parent
 )
-.$WindowsPowershellProfileLocation\profile.ps1
+#.$WindowsPowershellProfileLocation\profile.ps1
