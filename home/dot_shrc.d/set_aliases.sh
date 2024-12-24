@@ -1,4 +1,4 @@
-alias pvim='nvim -c $XDG_CONFIG_HOME/nvim-pluginless/init.vim'
+alias pvim='nvim -u $XDG_CONFIG_HOME/nvim-pluginless/init.vim'
 
 alias eza="eza --icons=auto"
 ezap() {
