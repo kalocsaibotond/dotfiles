@@ -9,7 +9,7 @@ set nocompatible
 set number relativenumber
 
 " Set ruler
-set colorcolumn=79
+set colorcolumn=80
 
 " Set shift width to 4 spaces.Set tab width to 4 columns.
 set shiftwidth=4
