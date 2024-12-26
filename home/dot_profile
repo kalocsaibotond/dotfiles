@@ -6,5 +6,3 @@ if [ -d $HOME/.profile.d ]; then
   done
   unset f
 fi
-
-[ -f $ENV ] && . $ENV

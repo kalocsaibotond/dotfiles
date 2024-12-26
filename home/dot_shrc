@@ -7,8 +7,6 @@ case $- in
 *) return ;;
 esac
 
-[ -f /etc/shrc ] && . /etc/shrc
-
 if [ -d $HOME/.shrc.d ]; then
   for f in $HOME/.shrc.d/*.sh; do
     [ -r $f ] && . $f
