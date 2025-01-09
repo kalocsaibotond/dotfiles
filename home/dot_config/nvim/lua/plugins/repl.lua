@@ -1,3 +1,14 @@
+local pick_repl
+if "telescope" == LazyVim.pick.picker.name then
+	pick_repl = function()
+		vim.cmd("Telescope REPLShow")
+	end
+elseif "fzf" == LazyVim.pick.picker.name then
+	pick_repl = function()
+		require("yarepl.extensions.fzf").repl_show()
+	end
+end
+
 -- Execute commands with count values
 local function run_cmd_with_count(cmd)
 	vim.cmd(string.format("%d%s", vim.v.count, cmd))
@@ -79,7 +90,9 @@ return {
 				},
 			},
 		})
-		require("telescope").load_extension("REPLShow")
+		if "telescope" == LazyVim.pick.picker.name then
+			require("telescope").load_extension("REPLShow")
+		end
 	end,
 	keys = {
 		-- REPL management keybindings
@@ -152,7 +165,7 @@ return {
 		},
 		{
 			"<LocalLeader>rl",
-			"<Cmd>Telescope REPLShow<Cr>",
+			pick_repl,
 			mode = "n",
 			desc = "List REPLs",
 		},
