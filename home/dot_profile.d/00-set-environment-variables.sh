@@ -8,3 +8,8 @@ export VISUAL="nvim"
 export PAGER="moar"
 export MANPAGER="moar"
 export BAT_PAGER="moar -no-linenumbers -quit-if-one-screen"
+
+# Configuring nnn file manager
+export NNN_PLUG='z:autojump;f:finder;o:fzopen;p:preview-tabbed'
+export NNN_OPENER="$XDG_CONFIG_HOME/nnn/plugins/nuke"
+export NNN_FIFO="/tmp/nnn.fifo"
