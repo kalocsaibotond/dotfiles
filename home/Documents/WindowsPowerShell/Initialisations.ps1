@@ -37,3 +37,10 @@ function Initialize-Conda
         conda activate "$Environment"
     }
 }
+
+
+function Initialize-VsDevShell
+{
+    & ("C:\Program Files (x86)\Microsoft Visual Studio\*\*\Common7\Tools\" +
+        "Launch-VsDevShell.ps1") @args @PSBoundParameters
+}

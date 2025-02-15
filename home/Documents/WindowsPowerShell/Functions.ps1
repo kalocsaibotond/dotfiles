@@ -29,8 +29,10 @@ function Test-Command
             HelpMessage = "Name of the command to test existence."
         )][string[]]$Name
     )
-    PROCESS {
-        foreach ($n in $Name) {
+    PROCESS
+    {
+        foreach ($n in $Name)
+        {
             [bool](Get-Command -Name $n -ErrorAction SilentlyContinue)
         }
     }
@@ -69,26 +71,32 @@ function Get-RegistryClasses
             because modifications occur in HKLM."
         )][switch]$Global
     )
-    if ($Global){
+    if ($Global)
+    {
         $ClassDrives = Get-PSDrive -PSProvider "registry" | Where-Object {
             $_.Root -eq "HKEY_LOCAL_MACHINE\SOFTWARE\Classes"
         }
-        if ($ClassDrives){  # If already exists then use it
+        if ($ClassDrives)
+        {  # If already exists then use it
             return $ClassDrives[0].Name + ":"
-        } else {
+        } else
+        {
             New-PSDrive `
                 -Name "Classes" `
                 -PSProvider "registry" `
                 -Root "HKEY_LOCAL_MACHINE\SOFTWARE\Classes" `
                 -Scope $Scope | Out-Null
         }
-    } else {
+    } else
+    {
         $ClassDrives = Get-PSDrive -PSProvider "registry" | Where-Object {
             $_.Root -eq "HKEY_CURRENT_USER\SOFTWARE\Classes"
         }
-        if ($ClassDrives){  # If already exists then use it
+        if ($ClassDrives)
+        {  # If already exists then use it
             return $ClassDrives[0].Name + ":"
-        } else {
+        } else
+        {
             New-PSDrive `
                 -Name "Classes" `
                 -PSProvider "registry" `
@@ -164,11 +172,14 @@ function Add-ContextMenuDir
             because modifications occur in HKLM."
         )][switch]$Global
     )
-    BEGIN {
+    BEGIN
+    {
         $RegistryClasses = Get-RegistryClasses -Scope "2" -Global:$Global
     }
-    PROCESS {
-        foreach($shell in $ContextMenuDirRegeditEntries){
+    PROCESS
+    {
+        foreach($shell in $ContextMenuDirRegeditEntries)
+        {
             $RegistryPath = Join-Path -Path (
                 Join-Path -Path $RegistryClasses -ChildPath $shell
             ) -ChildPath $DisplayName
@@ -234,12 +245,16 @@ function Remove-ContextMenuDir
         )][switch]$Global
 
     )
-    BEGIN {
+    BEGIN
+    {
         $RegistryClasses = Get-RegistryClasses -Scope "2" -Global:$Global
     }
-    PROCESS {
-        foreach($n in $DisplayName){
-            foreach($shell in $ContextMenuDirRegeditEntries){
+    PROCESS
+    {
+        foreach($n in $DisplayName)
+        {
+            foreach($shell in $ContextMenuDirRegeditEntries)
+            {
                 $RegistryPath = Join-Path -Path (
                     Join-Path -Path $RegistryClasses -ChildPath $shell
                 ) -ChildPath $n
@@ -318,11 +333,14 @@ function Add-ContextMenu
             because modifications occur in HKLM."
         )][switch]$Global
     )
-    BEGIN {
+    BEGIN
+    {
         $RegistryClasses = Get-RegistryClasses -Scope "2" -Global:$Global
     }
-    PROCESS {
-        foreach($class in $Classes){
+    PROCESS
+    {
+        foreach($class in $Classes)
+        {
             $RegistryPath = Join-Path -Path (
                 Join-Path -Path $RegistryClasses -ChildPath $class
             ) -ChildPath (
@@ -395,12 +413,16 @@ function Remove-ContextMenu
         )][switch]$Global
 
     )
-    BEGIN {
+    BEGIN
+    {
         $RegistryClasses = Get-RegistryClasses -Scope "2" -Global:$Global
     }
-    PROCESS { 
-        foreach($n in $DisplayName){
-            foreach($class in $Classes){
+    PROCESS
+    { 
+        foreach($n in $DisplayName)
+        {
+            foreach($class in $Classes)
+            {
                 $RegistryPath = Join-Path -Path (
                     Join-Path -Path $RegistryClasses -ChildPath $class
                 ) -ChildPath (

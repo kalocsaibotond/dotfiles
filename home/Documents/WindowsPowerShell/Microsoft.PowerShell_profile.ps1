@@ -1,6 +1,8 @@
-if ("Core" -eq $PSEdition){
+if ("Core" -eq $PSEdition)
+{
     $ProfileLocation = $WindowsPowershellProfileLocation
-} else {
+} else
+{
     $ProfileLocation = (
         Split-Path -Path $Profile.CurrentUserCurrentHost -Parent
     )

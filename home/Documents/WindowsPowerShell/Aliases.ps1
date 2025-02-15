@@ -70,3 +70,8 @@ Set-Alias `
     -Name condainit `
     -Value Initialize-Conda `
     -Description "Conda initialisaiton"
+
+Set-Alias `
+    -Name vsdevsh `
+    -Value Initialize-VsDevShell `
+    -Description "Initialise Visual Studio developer shell."

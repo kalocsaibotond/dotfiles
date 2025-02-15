@@ -8,7 +8,7 @@ $EnvironmentVariablesSetup = @{
     PAGER = "moar"
     MANPAGER = "moar"
     BAT_PAGER = "moar -no-linenumbers -quit-if-one-screen"
-  }
+}
 
 
 function Set-EnvironmentVariablesSetup
@@ -34,7 +34,8 @@ function Set-EnvironmentVariablesSetup
             persistent."
         )][string]$Scope = "Process"
     )
-    foreach ($env_var_name in $EnvironmentVariablesSetup.keys){
+    foreach ($env_var_name in $EnvironmentVariablesSetup.keys)
+    {
         [Environment]::SetEnvironmentVariable(
             $env_var_name,
             $EnvironmentVariablesSetup[$env_var_name],
@@ -67,7 +68,8 @@ function Remove-EnvironmentVariablesSetup
             persistent."
         )][string]$Scope = "Process"
     )
-    foreach ($env_var_name in $EnvironmentVariablesSetup.keys){
+    foreach ($env_var_name in $EnvironmentVariablesSetup.keys)
+    {
         [Environment]::SetEnvironmentVariable(
             $env_var_name,
             "",
