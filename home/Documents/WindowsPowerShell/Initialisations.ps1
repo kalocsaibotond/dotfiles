@@ -54,9 +54,10 @@ function Initialize-VsDevShell
     .EXAMPLE
         PS> Initialize-VsDevShell
     #>
-    $Launcher = (
+    $LauncherPaths = Resolve-Path -Path (
         "C:\Program Files (x86)\Microsoft Visual Studio\*\*\Common7\Tools\" +
         "Launch-VsDevShell.ps1"
     )
+    $Launcher = $LauncherPaths[-1].Path  # Prefer the latest
     & $Launcher @args @PSBoundParameters
 }
