@@ -41,6 +41,22 @@ function Initialize-Conda
 
 function Initialize-VsDevShell
 {
-    & ("C:\Program Files (x86)\Microsoft Visual Studio\*\*\Common7\Tools\" +
-        "Launch-VsDevShell.ps1") @args @PSBoundParameters
+    <#
+    .SYNOPSYS
+        Initialise Visual Studio Powershell Development Shell
+    .DESCRIPTION
+        Tries to find a Launch-VsDevShell.ps1 script in the Visual Studio
+        and Build Tools installation directories and runs it.
+        If found, a Visual Studio Developer Powershell is initialised
+        (or rather launched).
+    .PARAMETER
+        Any given parameter is passed to the Launch-VsDevShell.ps1 script.
+    .EXAMPLE
+        PS> Initialize-VsDevShell
+    #>
+    $Launcher = (
+        "C:\Program Files (x86)\Microsoft Visual Studio\*\*\Common7\Tools\" +
+        "Launch-VsDevShell.ps1"
+    )
+    & $Launcher @args @PSBoundParameters
 }
