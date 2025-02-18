@@ -9,6 +9,9 @@ $EnvironmentVariablesSetup = @{
     MANPAGER = "moar"
     BAT_PAGER = "moar -no-linenumbers -quit-if-one-screen"
 }
+$EnvironmentVariablesSetup["BAT_CONFIG_DIR"] = Join-Path `
+    -Path $EnvironmentVariablesSetup["XDG_CONFIG_HOME"] `
+    -ChildPath "bat"
 
 
 function Set-EnvironmentVariablesSetup

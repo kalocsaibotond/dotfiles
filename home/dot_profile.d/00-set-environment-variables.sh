@@ -7,7 +7,10 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export PAGER="moar"
 export MANPAGER="moar"
+
+# Configuring bat pager
 export BAT_PAGER="moar -no-linenumbers -quit-if-one-screen"
+export BAT_CONFIG_DIR="$XDG_CONFIG_HOME/bat"
 
 # Configuring nnn file manager
 export NNN_PLUG='z:autojump;f:finder;o:fzopen;p:preview-tabbed'
