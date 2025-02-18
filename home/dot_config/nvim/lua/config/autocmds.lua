@@ -30,10 +30,13 @@ else
 		desc = "Set C language family filetype related options.",
 	})
 
-	-- Powershell file type settings
+	-- Powershell, C# file type settings
 	vim.api.nvim_create_autocmd({ "FIleType" }, {
 		callback = function()
-			if "ps1" == vim.opt_local.filetype:get() then
+			if
+				"ps1" == vim.opt_local.filetype:get()
+				or "cs" == vim.opt_local.filetype:get()
+			then
 				vim.opt_local.tabstop = 4
 				vim.opt_local.expandtab = true
 				vim.opt_local.softtabstop = 4
