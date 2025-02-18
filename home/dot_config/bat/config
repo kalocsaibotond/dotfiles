@@ -1,6 +1,7 @@
 # .NET development binding
 --map-syntax='*.csproj:XML'
 --map-syntax='*.xproj:XML'
+--map-syntax='*.vcxproj:XML'
 --map-syntax='packages.config:XML'
 --map-syntax='*.vbproj:XML'
 --map-syntax='*.resx:XML'
