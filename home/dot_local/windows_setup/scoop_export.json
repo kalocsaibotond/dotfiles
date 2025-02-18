@@ -125,6 +125,11 @@
       "Name": "ripgrep"
     },
     {
+      "Info": "Better GNU grep",
+      "Source": "main",
+      "Name": "ast-grep"
+    },
+    {
       "Info": "Better GNU sed",
       "Source": "main",
       "Name": "sd"
