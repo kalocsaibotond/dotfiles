@@ -1,2 +1,11 @@
 [include]
 	path = delta_pager.inc
+
+[core]
+    editor = nvim
+    autocrlf = false
+[user]
+    name = Botond Kalocsai
+    email = botond.kalocsai@3dhistech.com
+[init]
+    defaultBranch = main
