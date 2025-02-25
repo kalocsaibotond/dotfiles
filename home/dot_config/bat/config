@@ -1,3 +1,6 @@
+# OpenCL development binding
+--map-syntax='*.cl:C'
+
 # .NET development binding
 --map-syntax='*.csproj:XML'
 --map-syntax='*.xproj:XML'
