@@ -3,7 +3,7 @@ if "telescope" == LazyVim.pick.picker.name then
 	pick_repl = function()
 		vim.cmd("Telescope REPLShow")
 	end
-elseif "fzf" == LazyVim.pick.picker.name then
+else -- Fall back to fzf-lua as preferential.
 	pick_repl = function()
 		require("yarepl.extensions.fzf").repl_show()
 	end

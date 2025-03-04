@@ -3,7 +3,7 @@ if "telescope" == LazyVim.pick.picker.name then
 	pick_chezmoi = function()
 		require("telescope").extensions.chezmoi.find_files()
 	end
-elseif "fzf" == LazyVim.pick.picker.name then
+else -- Fall back to fzf-lua as preferential.
 	pick_chezmoi = function()
 		local chezmoi = require("chezmoi.commands")
 
