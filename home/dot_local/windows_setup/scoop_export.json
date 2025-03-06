@@ -240,6 +240,11 @@
       "Name": "qrencode"
     },
     {
+      "Info": "Audio, video playing CLI tool",
+      "Source": "extras",
+      "Name": "mpv"
+    },
+    {
       "Info": "Audio, video editing and converting CLI tool",
       "Source": "main",
       "Name": "ffmpeg"
