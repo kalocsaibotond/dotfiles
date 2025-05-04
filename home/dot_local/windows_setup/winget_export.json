@@ -4,6 +4,9 @@
     {
       "Packages": [
         {
+          "PackageIdentifier": "Microsoft.PowerToys"
+        },
+        {
           "PackageIdentifier": "Lyx.Lyx"
         }
       ],
