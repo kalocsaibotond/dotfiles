@@ -5,12 +5,16 @@
 if vim.g.vscode then
 -- vscode-nvim settings
 else
+	local filetype_settings =
+		vim.api.nvim_create_augroup("FiletypeSettings", { clear = true })
+
 	-- OpenCL file settings
 	vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 		pattern = "*.cl",
 		callback = function()
 			vim.opt_local.filetype = "c" -- We treat it as if it were a C file
 		end,
+		group = filetype_settings,
 		desc = "Set OpenCL filetype related options.",
 	})
 
@@ -27,6 +31,7 @@ else
 				vim.opt_local.shiftwidth = 8
 			end
 		end,
+		group = filetype_settings,
 		desc = "Set C language family filetype related options.",
 	})
 
@@ -43,6 +48,7 @@ else
 				vim.opt_local.shiftwidth = 4
 			end
 		end,
-		desc = "Set C language family filetype related options.",
+		group = filetype_settings,
+		desc = "Set .NET language family filetype related options.",
 	})
 end
