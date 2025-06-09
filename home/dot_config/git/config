@@ -3,7 +3,6 @@
 
 [core]
     editor = nvim
-    autocrlf = true
 [user]
     name = Botond Kalocsai
     email = botond.kalocsai@3dhistech.com
