@@ -14,5 +14,12 @@ export BAT_CONFIG_DIR="$XDG_CONFIG_HOME/bat"
 
 # Configuring nnn file manager
 export NNN_PLUG='z:autojump;f:finder;o:fzopen;p:preview-tabbed'
-export NNN_OPENER="$XDG_CONFIG_HOME/nnn/plugins/nuke"
-export NNN_FIFO="/tmp/nnn.fifo"
+if [ -z "$NNN_OPENER" ]; then
+  export NNN_OPENER="$XDG_CONFIG_HOME/nnn/plugins/nuke"
+fi
+if [ -z "$NNN_FIFO" ]; then
+  export NNN_FIFO="/tmp/nnn.fifo"
+fi
+if [ -z "$NNN_SEL" ]; then
+  export NNN_SEL=/tmp/.sel
+fi
