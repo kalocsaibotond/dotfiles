@@ -13,3 +13,5 @@ rgp() {
 difftp() {
   difft --color always "$@" | $PAGER
 }
+
+alias dv='devour'
