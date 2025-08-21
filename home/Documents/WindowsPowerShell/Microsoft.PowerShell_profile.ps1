@@ -8,7 +8,9 @@ if ("Core" -eq $PSEdition)
     )
 }
 
-."$ProfileLocation\Variables.ps1"
-."$ProfileLocation\Initialisations.ps1"
-."$ProfileLocation\Functions.ps1"
-."$ProfileLocation\Aliases.ps1"
+if (Test-Path -Path "$ProfileLocation/Profile/"){
+    $ScriptFiles = Get-ChildItem -Path "$ProfileLocation/Profile/*.ps1"
+    foreach($ScriptFile in $ScriptFiles){
+         . $ScriptFile.FullName
+    }
+}
