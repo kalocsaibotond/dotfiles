@@ -1,7 +1,6 @@
 {{- if eq .chezmoi.os "windows" }}
-."{{- .chezmoi.sourceDir -}}\Documents\WindowsPowerShell\Functions.ps1"
 
-if (Test-Command -Name "scoop"){
+if ([bool](Get-Command -Name "scoop" -ErrorAction SilentlyContinue)){
     $ScoopList = $(scoop list) | Out-Null
 } else {
     $ScoopList = ""
