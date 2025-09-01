@@ -5,9 +5,9 @@ $EnvironmentVariablesSetup = @{
     XDG_CACHE_HOME = "$HOME/.cache"
     EDITOR = "nvim"
     VISUAL = "nvim"
-    PAGER = "moar"
-    MANPAGER = "moar"
-    BAT_PAGER = "moar -no-linenumbers -quit-if-one-screen"
+    PAGER = "moor"
+    MANPAGER = "moor"
+    BAT_PAGER = "moor -no-linenumbers -quit-if-one-screen"
 }
 $EnvironmentVariablesSetup["BAT_CONFIG_DIR"] = Join-Path `
     -Path $EnvironmentVariablesSetup["XDG_CONFIG_HOME"] `

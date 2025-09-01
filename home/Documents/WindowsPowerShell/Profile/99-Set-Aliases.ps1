@@ -22,7 +22,7 @@ Set-Alias `
 function Start-EzaWithPager
 {
     eza.exe --colour=always --icons=always --classify=always `
-        @args @PSBoundParameters | moar
+        @args @PSBoundParameters | moor
 }
 Set-Alias `
     -Name ezap `
@@ -31,7 +31,7 @@ Set-Alias `
 
 function Start-FdWithPager
 {
-    fd.exe --color always @args @PSBoundParameters | moar
+    fd.exe --color always @args @PSBoundParameters | moor
 }
 Set-Alias `
     -Name fdp `
@@ -40,7 +40,7 @@ Set-Alias `
 
 function Start-RgWithPager
 {
-    rg.exe --pretty @args @PSBoundParameters | moar -no-linenumbers
+    rg.exe --pretty @args @PSBoundParameters | moor -no-linenumbers
 }
 Set-Alias `
     -Name rgp `
@@ -49,7 +49,7 @@ Set-Alias `
 
 function Start-DifftWithPager
 {
-    difft.exe --color always @args @PSBoundParameters | moar -no-linenumbers
+    difft.exe --color always @args @PSBoundParameters | moor -no-linenumbers
 }
 Set-Alias `
     -Name difftp `
