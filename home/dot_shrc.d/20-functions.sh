@@ -8,7 +8,7 @@ nnn() {
 
   NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
 
-  command nnn "$@"
+  command nnn -c "$@"
 
   [ ! -f "$NNN_TMPFILE" ] || {
     . "$NNN_TMPFILE"
