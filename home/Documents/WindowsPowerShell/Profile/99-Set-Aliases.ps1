@@ -56,6 +56,26 @@ Set-Alias `
     -Value Start-DifftWithPager `
     -Description "difft with pager."
 
+function Open-WithBatFzf()
+{
+    bat $(fzf @args @PSBoundParameters)
+}
+Set-Alias `
+    -Name batf `
+    -Value Open-WithBatFzf `
+    -Description "Select a file with fzf and open it with bat."
+
+function Open-WithPagerFzf()
+{
+    & $ENV:PAGER $(fzf @args @PSBoundParameters)
+}
+Set-Alias `
+    -Name pagerf `
+    -Value Open-WithPagerFzf `
+    -Description "Select a file with fzf and open it with a pager."
+
+
+
 function Restart-Workspacer
 {
     Stop-Process -Name workspacer*

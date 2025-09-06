@@ -13,5 +13,11 @@ rgp() {
 difftp() {
   difft --color always "$@" | $PAGER
 }
+batf() {
+  bat $(fzf "$@")
+}
+pagerf() {
+  "$PAGER" $(fzf "$@")
+}
 
 alias dv='devour'
