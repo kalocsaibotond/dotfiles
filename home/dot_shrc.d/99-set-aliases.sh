@@ -38,10 +38,18 @@ difftp() {
   difft --color always "$@" | $PAGER
 }
 batf() {
-  bat $(fzf "$@")
+  bat $(fzf --preview \
+    'bat --style=numbers --color=always --line-range :100 {}' "$@")
 }
-pagerf() {
-  "$PAGER" $(fzf "$@")
-}
+if command -v bat >/dev/null 2>&1; then
+  pagerf() {
+    "$PAGER" $(fzf --preview \
+      'bat --style=numbers --color=always --line-range :100 {}' "$@")
+  }
+else
+  pagerf() {
+    "$PAGER" $(fzf --preview 'head -n 100 {}' "$@")
+  }
+fi
 
 alias dv='devour'

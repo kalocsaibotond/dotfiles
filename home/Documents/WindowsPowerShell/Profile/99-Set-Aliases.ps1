@@ -76,16 +76,30 @@ Set-Alias `
 
 function Open-WithBatFzf()
 {
-    bat $(fzf @args @PSBoundParameters)
+    bat $(fzf --preview `
+            'bat --style=numbers --color=always --line-range :100 {}' `
+            @args @PSBoundParameters)
 }
 Set-Alias `
     -Name batf `
     -Value Open-WithBatFzf `
     -Description "Select a file with fzf and open it with bat."
-
-function Open-WithPagerFzf()
+if (Test-Command bat)
 {
-    & $ENV:PAGER $(fzf @args @PSBoundParameters)
+    function Open-WithPagerFzf()
+    {
+        & $ENV:PAGER $(fzf --preview `
+                'bat --style=numbers --color=always --line-range :100 {}' `
+                @args @PSBoundParameters)
+    }
+} else
+{
+    function Open-WithPagerFzf()
+    {
+        & $ENV:PAGER $(fzf --preview `
+                'Get-Content -Path {} -TotalCount 100 -ReadCount 100' `
+                @args @PSBoundParameters)
+    }
 }
 Set-Alias `
     -Name pagerf `
