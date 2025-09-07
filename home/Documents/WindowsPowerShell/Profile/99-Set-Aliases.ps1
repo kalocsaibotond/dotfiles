@@ -9,6 +9,24 @@ Set-Alias `
     -Value Start-PluginlessNeovim `
     -Description "Neovim With a pluginless config."
 
+# TODO: add ucd and scd command like with the posix shell config.
+# function Set-UserDirectoryLocation
+# {
+#
+# }
+# Set-Alias `
+#     -Name ucd `
+#     -Value Select-UserDirectoryLocation `
+#     -Description "Cd-s into an fzf picked user directory"
+# function Set-SubDirectoryLocation
+# {
+#
+# }
+# Set-Alias `
+#     -Name scd `
+#     -Value Select-SubDirectoryLocation `
+#     -Description "Cd-s into an fzf-picked subdirectory."
+
 
 function Start-EzaWithIcons
 {
@@ -21,7 +39,7 @@ Set-Alias `
 
 function Start-EzaWithPager
 {
-    eza.exe --colour=always --icons=always --classify=always `
+    eza.exe -G --colour=always --icons=always --classify=always `
         @args @PSBoundParameters | moor
 }
 Set-Alias `
