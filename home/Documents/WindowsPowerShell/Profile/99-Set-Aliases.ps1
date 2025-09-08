@@ -9,23 +9,49 @@ Set-Alias `
     -Value Start-PluginlessNeovim `
     -Description "Neovim With a pluginless config."
 
-# TODO: add ucd and scd command like with the posix shell config.
-# function Set-UserDirectoryLocation
-# {
-#
-# }
-# Set-Alias `
-#     -Name ucd `
-#     -Value Select-UserDirectoryLocation `
-#     -Description "Cd-s into an fzf picked user directory"
-# function Set-SubDirectoryLocation
-# {
-#
-# }
-# Set-Alias `
-#     -Name scd `
-#     -Value Select-SubDirectoryLocation `
-#     -Description "Cd-s into an fzf-picked subdirectory."
+# TODO: Solve closing the pipe upon fzf selection.
+if (Test-Command bat)
+{
+    function Select-SubDirectoryLocation
+    {
+        Get-ChildItem -Path . -Recurse -Directory -Force -Name |
+            fzf --preview `
+                'eza -G --colour=always --icons=always `
+                --classify=always {}' @args @PSBoundParameters |
+            Set-Location
+    }
+    function Select-UserDirectoryLocation
+    {
+        Get-ChildItem -Path $HOME -Recurse -Directory -Force -Name |
+            fzf --preview `
+                "eza -G --colour=always --icons=always `
+                --classify=always $HOME\{}" @args @PSBoundParameters |
+            Foreach-Object { "$HOME\$_" } | Set-Location
+    }
+} else
+{
+    function Select-SubDirectoryLocation
+    {
+        Get-ChildItem -Path . -Recurse -Directory -Force -Name |
+            fzf --preview 'Get-ChildItem -Path {}' @args @PSBoundParameters |
+            Set-Location
+    }
+    function Select-UserDirectoryLocation
+    {
+        Get-ChildItem -Path $HOME -Recurse -Directory -Force -Name |
+            fzf --preview "Get-ChildItem -Path $HOME\{}" `
+                @args @PSBoundParameters |
+            Foreach-Object { "$HOME\$_" } | Set-Location
+    }
+}
+Set-Alias `
+    -Name scd `
+    -Value Select-SubDirectoryLocation `
+    -Description "Cd-s into an fzf-picked subdirectory."
+Set-Alias `
+    -Name ucd `
+    -Value Select-UserDirectoryLocation `
+    -Description "Cd-s into an fzf-picked user director."
 
 
 function Start-EzaWithIcons
