@@ -13,7 +13,16 @@ export BAT_PAGER="moar -no-linenumbers -quit-if-one-screen"
 export BAT_CONFIG_DIR="$XDG_CONFIG_HOME/bat"
 
 # Configuring nnn file manager
-export NNN_PLUG='z:autojump;f:finder;o:fzopen;p:preview-tabbed'
+NNN_PLUG_OFFICIAL='z:autojump;f:finder;o:fzopen;p:preview-tabbed'
+if [ -h "$XDG_CONFIG_HOME/.config/nnn/plugins/official" ] ||
+  [ -d "$XDG_CONFIG_HOME/.config/nnn/plugins/official" ]; then
+  NNN_PLUG=$(echo $NNN_PLUG_OFFICIAL | sed 's/:/:official\//')
+else
+  NNN_PLUG=$NNN_PLUG_OFFICIAL
+fi
+unset NNN_PLUG_OFFICIAL
+export NNN_PLUG
+
 if [ -z "$NNN_OPENER" ]; then
   export NNN_OPENER="$XDG_CONFIG_HOME/nnn/plugins/nuke"
 fi
