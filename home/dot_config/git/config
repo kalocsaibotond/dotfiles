@@ -5,6 +5,6 @@
     editor = nvim
 [user]
     name = Botond Kalocsai
-    email = botond.kalocsai@3dhistech.com
+    email = kalocsaibotond@gmail.com
 [init]
     defaultBranch = main
