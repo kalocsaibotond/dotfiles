@@ -14,9 +14,9 @@ export BAT_CONFIG_DIR="$XDG_CONFIG_HOME/bat"
 
 # Configuring nnn file manager
 NNN_PLUG_OFFICIAL='z:autojump;f:finder;o:fzopen;p:preview-tabbed'
-if [ -h "$XDG_CONFIG_HOME/.config/nnn/plugins/official" ] ||
-  [ -d "$XDG_CONFIG_HOME/.config/nnn/plugins/official" ]; then
-  NNN_PLUG=$(echo $NNN_PLUG_OFFICIAL | sed 's/:/:official\//')
+if [ -h "$XDG_CONFIG_HOME/nnn/plugins/official" ] ||
+  [ -d "$XDG_CONFIG_HOME/nnn/plugins/official" ]; then
+  NNN_PLUG=$(echo $NNN_PLUG_OFFICIAL | sed 's/:/:official\//g')
 else
   NNN_PLUG=$NNN_PLUG_OFFICIAL
 fi
