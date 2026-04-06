@@ -145,7 +145,7 @@ Set-Alias `
     -Description "Start or rather restart workspacer tiling window manager."
 
 Set-Alias `
-    -Name condainit `
+    -Name initconda `
     -Value Initialize-Conda `
     -Description "Conda initialisaiton"
 

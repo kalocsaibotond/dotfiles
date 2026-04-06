@@ -53,3 +53,5 @@ else
 fi
 
 alias dv='devour'
+
+alias initconda='initialise-conda'
