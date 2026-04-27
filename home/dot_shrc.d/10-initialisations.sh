@@ -39,6 +39,24 @@ initialise-conda() {
   elif [ -d '/usr/local/anaconda3' ] &&
     [ -x '/usr/local/anaconda3/bin/conda' ]; then
     anaconda_path='/usr/local/anaconda3'
+  elif [ -d "$2/miniconda3" ] &&
+    [ -x "$2/miniconda3/bin/conda" ]; then
+    anaconda_path="$2/miniconda3"
+  elif [ -d "$HOME/.opt/miniconda3" ] &&
+    [ -x "$HOME/.opt/miniconda3/bin/conda" ]; then
+    anaconda_path="$HOME/.opt/miniconda3"
+  elif [ -d "$HOME/.local/miniconda3" ] &&
+    [ -x "$HOME/.local/miniconda3/bin/conda" ]; then
+    anaconda_path="$HOME/.local/miniconda3"
+  elif [ -d "$HOME/miniconda3" ] &&
+    [ -x "$HOME/miniconda3/bin/conda" ]; then
+    anaconda_path="$HOME/miniconda3"
+  elif [ -d '/opt/miniconda3' ] &&
+    [ -x '/opt/miniconda3/bin/conda' ]; then
+    anaconda_path='/opt/miniconda3'
+  elif [ -d '/usr/local/miniconda3' ] &&
+    [ -x '/usr/local/miniconda3/bin/conda' ]; then
+    anaconda_path='/usr/local/miniconda3'
   else
     echo "Could not find an anaconda installation"
     return 1
