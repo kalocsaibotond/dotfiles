@@ -20,7 +20,7 @@ if ! command -v z >/dev/null && command -v zoxide >/dev/null; then
   esac
 fi
 
-initialise-conda() {
+initialise_conda() {
   if [ -d "$2/anaconda3" ] &&
     [ -x "$2/anaconda3/bin/conda" ]; then
     anaconda_path="$2/anaconda3"
