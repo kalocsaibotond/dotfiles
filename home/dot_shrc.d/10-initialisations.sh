@@ -4,7 +4,7 @@ set -o vi
 # Set shell prompt
 case $SHELL_NAME in
 'bash')
-  PS1=$(echo $PS1 | sed "s/[^$]\\+\\$/\\[\\\\u@\\\\h \\\\W\\$\\] /")
+  PS1=$(echo $PS1 | sed "s/\\\\s-\\\\v\\\\\\$\$/\\[\\\\u@\\\\h \\\\W\\$\\] /")
   ;;
 esac
 
