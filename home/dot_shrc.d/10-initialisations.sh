@@ -71,10 +71,15 @@ initialise_conda() {
     if [ -f "$anaconda_path/etc/profile.d/conda.sh" ]; then
       . "$anaconda_path/etc/profile.d/conda.sh"
     else
+      case ":$PATH:" in
+      *":$anaconda_path/bin:"*) ;;
+      *) PATH="$anaconda_path/bin:$PATH" ;;
+      esac
       export PATH="$anaconda_path/bin:$PATH"
     fi
   fi
   unset __conda_setup
+  unset anaconda_path
 
   if [ -n "$1" ]; then
     conda activate "$1"
