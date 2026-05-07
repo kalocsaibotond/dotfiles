@@ -3,6 +3,7 @@
 .profile.d
 .shrc
 .shrc.d
+.config/tmux
 {{ else }}
 AppData
 Documents
