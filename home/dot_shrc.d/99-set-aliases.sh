@@ -54,4 +54,5 @@ fi
 
 alias dv='devour'
 
-alias initconda='initialise-conda'
+alias initconda='initialise_conda'
+alias initmamba='initialise_mamba'
