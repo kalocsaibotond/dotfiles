@@ -1,7 +1,7 @@
 # Implements cd on quit when using nnn.
 # Source: https://github.com/jarun/nnn/blob/master/misc/quitcd/quitcd.bash_sh_zsh
 nnn() {
-  [ "${NNNLVL:-0}" -eq 0 ] || {
+  [ "${NNNLVL:-0}" -eq '0' ] || {
     echo "nnn is already running"
     return
   }
@@ -12,7 +12,7 @@ nnn() {
 
   [ ! -f "$NNN_TMPFILE" ] || {
     . "$NNN_TMPFILE"
-    rm -f -- "$NNN_TMPFILE" >/dev/null
+    rm -f -- "$NNN_TMPFILE" >/'dev/null'
   }
 
 }
@@ -25,12 +25,12 @@ nnn() {
 osc52copy() {
   if [ -n "$1" ]; then
     if [ -f "$1" ]; then
-      printf "\033]52;c;%s\033\\" "$(base64 -w 0 "$1")"
+      printf "\033]52;c;%s\033\\" "$(base64 -w '0' "$1")"
     else
       echo "Error: '$1' invalid file!" >&2
-      return 1
+      return '1'
     fi
   else
-    printf "\033]52;c;%s\033\\" "$(base64 -w 0)"
+    printf "\033]52;c;%s\033\\" "$(base64 -w '0')"
   fi
 }

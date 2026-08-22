@@ -1,4 +1,4 @@
-alias pvim='nvim -u "$XDG_CONFIG_HOME/vim-pluginless/init.vim"'
+alias pvim='nvim -u "$XDG_CONFIG_HOME/vim_pluginless/init.vim"'
 
 # NOTE: These only work if the directory names do not contain \n.
 # Even though fzf has an --read0 flag, posix find to not support --print0 flag.

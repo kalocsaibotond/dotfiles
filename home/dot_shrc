@@ -2,14 +2,14 @@
 # .shrc
 
 # Only apply in interactive shell sessions
-case $- in
+case "$-" in
 *i*) ;; # Interactive shell session
 *) return ;;
 esac
 
-if [ -d $HOME/.shrc.d ]; then
-  for f in $HOME/.shrc.d/*.sh; do
-    [ -r $f ] && . $f
+if [ -d "$HOME/.shrc.d" ]; then
+  for f in "$HOME"/.shrc.d/*.sh; do
+    [ -r "$f" ] && . "$f"
   done
   unset f
 fi

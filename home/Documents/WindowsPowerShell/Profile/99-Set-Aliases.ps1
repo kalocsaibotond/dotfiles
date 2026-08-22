@@ -1,6 +1,6 @@
 function Start-PluginlessNeovim
 {
-    nvim.exe -u $ENV:XDG_CONFIG_HOME\nvim-pluginless\init.vim `
+    nvim.exe -u $ENV:XDG_CONFIG_HOME\nvim_pluginless\init.vim `
         @args `
         @PSBoundParameters
 }

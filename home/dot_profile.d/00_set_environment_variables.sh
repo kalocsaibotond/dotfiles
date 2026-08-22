@@ -19,14 +19,14 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
 
 if command -v 'nvim' >'/dev/null' 2>&1; then
-  if [ -r "$XDG_CONFIG_HOME/vim-pluginless/init.vim" ]; then
-    export EDITOR='nvim -u "$XDG_CONFIG_HOME/vim-pluginless/init.vim"'
+  if [ -r "$XDG_CONFIG_HOME/vim_pluginless/init.vim" ]; then
+    export EDITOR='nvim -u "$XDG_CONFIG_HOME/vim_pluginless/init.vim"'
   else
     export EDITOR='nvim --clean'
   fi
 elif command -v 'vim' >'/dev/null' 2>&1; then
-  if [ -r "$XDG_CONFIG_HOME/vim-pluginless/init.vim" ]; then
-    export EDITOR='vim -u "$XDG_CONFIG_HOME/vim-pluginless/init.vim"'
+  if [ -r "$XDG_CONFIG_HOME/vim_pluginless/init.vim" ]; then
+    export EDITOR='vim -u "$XDG_CONFIG_HOME/vim_pluginless/init.vim"'
   else
     export EDITOR='vim --clean'
   fi
