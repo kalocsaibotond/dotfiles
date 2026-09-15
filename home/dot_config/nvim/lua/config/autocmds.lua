@@ -18,7 +18,7 @@ else
 		desc = "Set OpenCL filetype related options.",
 	})
 
-	-- C language family related file settings (clang compiler supported)
+	-- 8 white space indentation langauges.
 	vim.api.nvim_create_autocmd({ "FIleType" }, {
 		callback = function()
 			if
@@ -35,11 +35,12 @@ else
 		desc = "Set C language family filetype related options.",
 	})
 
-	-- Powershell, C# file type settings
+	-- 4 white space indentation languages.
 	vim.api.nvim_create_autocmd({ "FIleType" }, {
 		callback = function()
 			if
 				"ps1" == vim.opt_local.filetype:get()
+				or "awk" == vim.opt_local.filetype:get()
 				or "cs" == vim.opt_local.filetype:get()
 			then
 				vim.opt_local.tabstop = 4
