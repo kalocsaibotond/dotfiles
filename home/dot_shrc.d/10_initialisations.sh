@@ -2,9 +2,42 @@
 set -o 'vi'
 
 # Set shell prompt
+ascii_color_reset="$(printf '\033[0m')"
+if [ "$(id -u)" = "0" ]; then
+  user_ascii_color="$(printf '\033[1;31m')" # red
+else
+  user_ascii_color="$(printf '\033[1;32m')" # green
+fi
+host_ascii_color="$(printf '\033[1;34m')"    # blue
+cwd_ascii_color="$(printf '\033[1;36m')"     # cyan
+shell_ascii_color="$(printf '\033[1;37m')"   # white
+bracket_ascii_color="$(printf '\033[1;33m')" # yellow.
 case "$SHELL_NAME" in
 'bash')
-  PS1="${PS1/\\s-\\v\\$/[\\u@\\h \\W\\$]}"
+  new_ps1="\\[${bracket_ascii_color}\\][\\[${ascii_color_reset}\\]"
+  new_ps1="${new_ps1}\\[${user_ascii_color}\\]\\u\\[${ascii_color_reset}\\]"
+  new_ps1="${new_ps1}\\[${bracket_ascii_color}\\]@\\[${ascii_color_reset}\\]"
+  new_ps1="${new_ps1}\\[${host_ascii_color}\\]\\h\\[${ascii_color_reset}\\] "
+  new_ps1="${new_ps1}\\[${cwd_ascii_color}\\]\\W\\[${ascii_color_reset}\\]"
+  new_ps1="${new_ps1}\\[${bracket_ascii_color}\\]] \\[${ascii_color_reset}\\]"
+  new_ps1="${new_ps1}\\[${shell_ascii_color}\\]bash\\[${ascii_color_reset}\\]"
+  new_ps1="${new_ps1}\\[${user_ascii_color}\\]\\$\\[${ascii_color_reset}\\]"
+
+  PS1="${PS1/\\s-\\v\\$/$new_ps1}"
+  ;;
+'dash')
+  new_ps1="${bracket_ascii_color}[${ascii_color_reset}"
+  new_ps1="${new_ps1}${user_ascii_color}"'${USER}'"${ascii_color_reset}"
+  new_ps1="${new_ps1}${bracket_ascii_color}@${ascii_color_reset}"
+  new_ps1="${new_ps1}${host_ascii_color}"'$(uname -n)'"${ascii_color_reset} "
+  new_ps1="${new_ps1}\
+${cwd_ascii_color}"'$(basename "$PWD")'"${ascii_color_reset}"
+  new_ps1="${new_ps1}${bracket_ascii_color}] ${ascii_color_reset}"
+  new_ps1="${new_ps1}${shell_ascii_color}"'dash'"${ascii_color_reset}"
+  new_ps1="${new_ps1}${user_ascii_color}"'\1'"${ascii_color_reset}"
+
+  PS1="$(printf '%s' "$PS1" |
+    sed 's/\([$#]\) /'"${new_ps1}"' /')"
   ;;
 esac
 
