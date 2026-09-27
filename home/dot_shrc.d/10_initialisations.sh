@@ -20,10 +20,16 @@ case "$SHELL_NAME" in
   new_ps1="${new_ps1}\\[${host_ascii_color}\\]\\h\\[${ascii_color_reset}\\] "
   new_ps1="${new_ps1}\\[${cwd_ascii_color}\\]\\W\\[${ascii_color_reset}\\]"
   new_ps1="${new_ps1}\\[${bracket_ascii_color}\\]] \\[${ascii_color_reset}\\]"
-  new_ps1="${new_ps1}\\[${shell_ascii_color}\\]bash\\[${ascii_color_reset}\\]"
-  new_ps1="${new_ps1}\\[${user_ascii_color}\\]\\$\\[${ascii_color_reset}\\]"
+  new_ps1="${new_ps1}\\[${shell_ascii_color}\\]\\s\\[${ascii_color_reset}\\]"
+  new_ps1="${new_ps1}\\[${user_ascii_color}\\]\\$\\[${ascii_color_reset}\\] "
 
-  PS1="${PS1/\\s-\\v\\$/$new_ps1}"
+  cleaned_ps1="$(
+    printf '%s' "$PS1" |
+      sed 's/\\[suh].*\$//
+  s/[][ ]//g'
+  )"
+
+  PS1="${cleaned_ps1}${new_ps1}"
   ;;
 'dash')
   new_ps1="${bracket_ascii_color}[${ascii_color_reset}"
